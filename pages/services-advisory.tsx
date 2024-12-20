@@ -39,7 +39,7 @@ const ServicesAdvisory: NextPage = () => {
         <NavbarPage />
       </div>
       <Heros
-        teamworkWithBusinessPeople="/teamworkwithbusinesspeopleanalysiscostgraph20231127053714utc-1@2x.png"
+        teamworkWithBusinessPeople="/hero.png"
         heroTitle="Service Advisory"
         homeServiceAdvisory="Home • Service • Advisory"
       />

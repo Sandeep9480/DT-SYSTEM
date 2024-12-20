@@ -55,6 +55,25 @@ body {
     justify-items: start;
   }
 
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+
+  }
+
+  .form .email {
+    height: 3rem;
+  }
+
+  .sectorSection {
+    padding: 0rem;
+  }
+
+  .navbar {
+    margin-top: 1.8rem
+  }
+
 }
 
 @media (max-width: 400px) {
@@ -75,5 +94,19 @@ body {
   .section {
     padding: 0;
   }
+
+  .icons {
+    padding: 1.7rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icons img {
+    margin: 0;
+  }
+
+
 
 }

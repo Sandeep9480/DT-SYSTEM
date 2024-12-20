@@ -36,10 +36,11 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                   src="/awnode-0dfbe7a0261a000265c522e86775eb316775eb1b.svg"
                 />
                 <Image
-                  className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
+                  style={{ border: "1px solid white" }}
+                  className="h-[1.8rem] w-[1.8rem] relative rounded-13xl-1"
                   loading="lazy"
-                  width={32}
-                  height={32}
+                  width={20}
+                  height={20}
                   alt=""
                   src="/frame.svg"
                 />

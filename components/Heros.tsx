@@ -35,14 +35,17 @@ const Heros: NextPage<HerosType> = ({
     >
       <div className="flex-1 flex flex-row items-start justify-start relative max-w-full">
         <Image
-          className="h-[31.875rem] flex-1 relative max-w-full overflow-hidden object-cover"
+          className="h-[31.875rem] w-[100%] flex-1 relative max-w-full overflow-hidden object-cover "
           loading="lazy"
-          width={1791}
+          width={2000}
           height={510}
           alt=""
           src={teamworkWithBusinessPeople}
         />
-        <div className="!m-[0] absolute bottom-[4.875rem] left-[4.375rem] flex flex-col items-start justify-start">
+        <div className="!m-[0] absolute bottom-[4.875rem] left-[4.375rem] flex flex-col items-start justify-start mq800:left-[1.5rem]" style={{
+          position: "absolute",
+
+        }}>
           <h1 className="m-0 relative text-inherit leading-[3.5rem] font-bold font-inherit z-[2] mq800:text-[2.688rem] mq800:leading-[2.813rem] mq450:text-[2rem] mq450:leading-[2.125rem]">
             {heroTitle}
           </h1>

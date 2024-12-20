@@ -545,7 +545,6 @@ const ServicesContent: NextPage<ServicesContentType> = ({ className = "" }) => {
                 </div>
               </div>
             </div>
-
             <div
               style={padding}
               className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
@@ -559,7 +558,7 @@ const ServicesContent: NextPage<ServicesContentType> = ({ className = "" }) => {
                 style={padding}
                 className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
                 data-acc-header
-                onClick={handleAccordionToggle7} // Replace with your function
+                onClick={handleAccordionToggle7}
               >
                 <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
                 <input
@@ -580,7 +579,8 @@ const ServicesContent: NextPage<ServicesContentType> = ({ className = "" }) => {
 
               {/* Accordion Content */}
               <div
-                className="w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden"
+                className={`w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden ${accordionOpen7 ? "open" : ""
+                  }`}
                 style={{
                   height: accordionOpen7 ? "auto" : "0px", // Dynamically control height
                 }}
@@ -609,8 +609,8 @@ const ServicesContent: NextPage<ServicesContentType> = ({ className = "" }) => {
                   </div>
                 </div>
               </div>
-
             </div>
+            <Footer />
           </div>
 
         </div>

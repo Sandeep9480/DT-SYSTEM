@@ -36,12 +36,12 @@ const SectorRight: NextPage<SectorRightType> = ({
 
   return (
     <div
-      className={`self-stretch rounded-xl bg-gray-100 flex flex-row items-start justify-start py-[1.812rem] pl-[4.125rem] pr-[2.437rem] box-border gap-[1rem] max-w-full text-left text-[2rem] text-color-5 font-archivo mq800:flex-wrap mq800:pl-[2.063rem] mq800:box-border ${className} `}
-      style={{ padding: "4rem" }}
+      className={`self-stretch rounded-xl bg-gray-100 flex flex-row items-start justify-start py-[1.812rem] pl-[4.125rem] pr-[2.437rem] box-border gap-[1rem] max-w-full text-left text-[2rem] text-color-5 font-archivo mq800:flex-wrap mq800:pl-[2.063rem] mq800:box-border icons ${className} `}
+      style={{ padding: "1.7rem" }}
     >
       <div className="h-[8rem] w-[33.25rem] relative rounded-xl bg-gray-100 hidden max-w-full" />
       <Image
-        className="h-[4.375rem] w-[4.375rem] relative rounded-81xl z-[1]"
+        className="h-[4.375rem] w-[4.375rem] relative rounded-81xl z-[1] ml-[2.5rem] img"
         loading="lazy"
         width={70}
         height={70}

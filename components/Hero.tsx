@@ -42,7 +42,10 @@ const Heros: NextPage<HerosType> = ({
                     alt=""
                     src="/teamworkwithbusinesspeopleanalysiscostgraph20231127053714utc-11@2x.png"
                 />
-                <div className="!m-[0] absolute bottom-[4.875rem] left-[4.375rem] flex flex-col items-start justify-start">
+                <div className="!m-[0] absolute bottom-[4.875rem] left-[4.375rem] flex flex-col items-start justify-start sectorHeader mq800:left-[1.5rem]" style={{
+                    position: "absolute",
+
+                }}>
                     <h1 className="m-0 relative text-inherit leading-[3.5rem] font-bold font-inherit z-[2] mq800:text-[2.688rem] mq800:leading-[2.813rem] mq450:text-[2rem] mq450:leading-[2.125rem]">
                         {heroTitle}
                     </h1>

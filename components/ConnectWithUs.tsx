@@ -32,7 +32,7 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
     <div className="w-full mx-auto px-8 flex flex-row bg-none gap-[10rem]">
       {/* Left side - Form */}
       <div className="flex-1">
-        <form className="grid grid-cols-2 gap-x-10 gap-y-10">
+        <form className="grid grid-cols-2 gap-x-10 gap-y-10 form">
           <div className="flex flex-col">
             <input
               type="text"
@@ -40,11 +40,11 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
               className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <input
               type="email"
               placeholder="Email*"
-              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="email border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
             />
           </div>
           <div className="flex flex-col mt-7">

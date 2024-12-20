@@ -68,31 +68,20 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
         </div>
         <div style={{ resize: "none", scrollbarWidth: "none" }} className="h-[36.5rem] overflow-y-auto flex flex-col items-start justify-start gap-[1.5rem] max-w-full text-[2rem] text-color-5 mq800:min-w-full mq450:h-auto mq1350:flex-1">
           <div className="self-stretch flex flex-col items-start justify-start gap-[1.5rem] shrink-0 max-w-full">
-            <div className="self-stretch rounded-xl bg-gray-100 flex flex-row items-start justify-start py-[1.812rem] px-[4.125rem] box-border relative gap-[1rem] max-w-full mq450:flex-wrap mq450:pl-[1.25rem] mq450:pr-[1.25rem] mq450:box-border mq350:justify-center mq350:items-center " style={style} >
-              <div className="h-[8rem] w-[33.25rem] relative rounded-xl bg-gray-100 hidden max-w-full z-[0] " />
-              <Image
-                className="h-[4.375rem] w-[4.375rem] relative rounded-81xl z-[1]"
-                width={70}
-                height={70}
-                alt=""
-                src="/feature-icon-with-circle.svg"
-              />
-              <div className="flex flex-col items-start justify-start pt-[0.437rem] px-[0rem] pb-[0rem]">
-                <h2 className="m-0 relative text-inherit leading-[3.5rem] capitalize font-medium font-inherit inline-block min-w-[5.313rem] z-[1] mq800:text-[1.625rem] mq800:leading-[2.813rem] mq450:text-[1.188rem] mq450:leading-[2.125rem] mq350:w-[20%]">
-                  Retail
-                </h2>
-              </div>
-              <Image
-                className="h-[1.813rem] w-[1.938rem] absolute !m-[0] top-[3.063rem] left-[5.313rem] z-[2] "
-                loading="lazy"
-                width={31}
-                height={29}
-                alt=""
-                src="/vector-5.svg"
-              />
-            </div>
+
             <SectorRight
+              groupDivPadding="1.812rem 4.125rem"
+              featureIconWithCircle="/Untitled design.png"
+              frameDivFlex="unset"
+              frameDivMinWidth="unset"
+              informationTechnology="Retail"
+            />
+
+            <SectorRight
+              groupDivPadding="1.812rem 4.125rem"
               featureIconWithCircle="/feature-icon-with-circle-1.svg"
+              frameDivFlex="unset"
+              frameDivMinWidth="unset"
               informationTechnology="Information Technology"
             />
             <SectorRight
@@ -109,14 +98,15 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
               frameDivMinWidth="unset"
               informationTechnology="Government"
             />
+
+            <SectorRight
+              groupDivPadding="1.812rem 4.125rem"
+              featureIconWithCircle="/feature-icon-with-circle-4.svg"
+              frameDivFlex="unset"
+              frameDivMinWidth="unset"
+              informationTechnology="Healthcare"
+            />
           </div>
-          <SectorRight
-            groupDivPadding="1.812rem 4.125rem"
-            featureIconWithCircle="/feature-icon-with-circle-4.svg"
-            frameDivFlex="unset"
-            frameDivMinWidth="unset"
-            informationTechnology="Healthcare"
-          />
         </div>
       </div>
     </section >

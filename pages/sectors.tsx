@@ -115,7 +115,7 @@ const Sectors: NextPage = () => {
       if (window.innerWidth < 500) {
 
         setSection({
-          left: "0rem"
+          padding: "1rem"
         })
         setPadding({
           padding: "0"
@@ -145,7 +145,7 @@ const Sectors: NextPage = () => {
   return (
 
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal]">
-      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }}>
+      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
         <NavbarPage />
       </div>
       <Hero
@@ -155,7 +155,7 @@ const Sectors: NextPage = () => {
         heroTitle="Sectors"
         homeServiceAdvisory="Home • Sectors"
       />
-      <section className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full lg:pb-[2.938rem] lg:box-border mq750:pl-[2.188rem] mq750:pr-[2.188rem] mq750:pb-[1.938rem] mq750:box-border">
+      <section style={section} className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full lg:pb-[2.938rem] lg:box-border mq750:pl-[2.188rem] mq750:pr-[2.188rem] mq750:pb-[1.938rem] mq750:box-border sectorSection">
 
         <div
           className="self-stretch flex-1 flex flex-row items-start justify-start text-[1.5rem] text-color"

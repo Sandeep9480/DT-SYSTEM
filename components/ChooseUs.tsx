@@ -91,11 +91,6 @@ const ChooseUs: NextPage<ChooseUsType> = ({ className = "" }) => {
 
         </div>
       </div>
-
-
-
-
-
     </section >
   );
 };
