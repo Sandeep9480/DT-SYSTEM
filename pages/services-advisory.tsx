@@ -35,8 +35,8 @@ const ServicesAdvisory: NextPage = () => {
           />
         </div>
       </div>
-      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }}>
-        <NavbarPage />
+      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
+        <div className="mt-[2rem]"><NavbarPage /></div>
       </div>
       <Heros
         teamworkWithBusinessPeople="/hero.png"

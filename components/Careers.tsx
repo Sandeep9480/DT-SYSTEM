@@ -8,7 +8,9 @@ export type CareersType = {
 const Careers: NextPage<CareersType> = ({ className = "" }) => {
   return (
     <section
-      className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[2.5rem] box-border max-w-full text-left text-[3.375rem] text-white font-archivo ${className}`}
+      id="careers"
+      data-section="careers"
+      className={`careers-section self-stretch flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[2.5rem] box-border max-w-full text-left text-[3.375rem] text-white font-archivo ${className}`}
     >
       <div className="flex-1 bg-color flex flex-col items-start justify-start pt-[5.5rem] px-[4.375rem] pb-[6.75rem] box-border relative gap-[1.5rem] max-w-full mq800:pt-[3.563rem] mq800:px-[2.188rem] mq800:pb-[4.375rem] mq800:box-border">
 
@@ -54,7 +56,7 @@ const Careers: NextPage<CareersType> = ({ className = "" }) => {
             src="/dots.svg"
           />
           <Image
-            className="absolute h-full top-[0rem] bottom-[0rem] left-[45.5rem] max-h-full w-[44.5rem] object-cover z-[2] mq1050:hidden"
+            className="absolute h-full top-[0rem] bottom-[0rem] left-[45.5rem] max-h-full w-[44.5rem] object-cover z-[2] mq1050:hidden ml-[5rem]"
             width={712}
             height={683}
             alt=""

@@ -29,7 +29,9 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
   }, []);
 
   return (
-    <div className="w-full mx-auto px-8 flex flex-row bg-none gap-[10rem] mq1050:flex-col-reverse mq1050:gap-[4rem] ">
+    <div id="contactUs"
+      data-section="contactUs"
+      className="contact-us-section w-full mx-auto px-8 flex flex-row bg-none gap-[10rem] mq1050:flex-col-reverse mq1050:gap-[4rem] ">
       {/* Left side - Form */}
       <div className="flex-1 ">
         <form className="grid grid-cols-2 gap-x-10 gap-y-10 form pl-[2rem] mq1050:w-[90%] mq450:w-[80%]">

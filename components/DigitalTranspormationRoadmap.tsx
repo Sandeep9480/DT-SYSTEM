@@ -103,6 +103,12 @@ const DigitalTranspormationRoadmap: NextPage<
       window.removeEventListener("resize", checkScreen);
     };
   }, []);
+  const [isAccordionOpen, setIsAccordionOpen] = useState(true); // State to track the accordion's open/close status
+
+  const onAccordionHeaderClick1 = () => {
+    setIsAccordionOpen((prevState) => !prevState); // Toggle accordion state
+  };
+  const [sideImage, setSideImage] = useState("/futuristicnightcityscapeviewhongkong20241018062121utc-1@2x.png");
 
   return (
     <section
@@ -116,48 +122,26 @@ const DigitalTranspormationRoadmap: NextPage<
           width={548}
           height={834}
           alt=""
-          src="/futuristicnightcityscapeviewhongkong20241018062121utc-1@2x.png"
+          src={sideImage}
         />
         <div
           className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full"
           data-acc-group
         >
-          <div
-            className="w-[41.125rem] h-[5.125rem] flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] cursor-pointer"
-            data-acc-item
-            data-acc-header
-            data-acc-original
-            onClick={onAccordionHeaderClick}
-          >
-            <div style={div} className="h-[4.625rem] w-[41.125rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] px-[2rem] box-border gap-[14.375rem]">
-              <div className="w-[41.125rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-              <div style={style} className="h-[3.125rem] w-[21.938rem] relative leading-[3.125rem] font-medium inline-block shrink-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]">
-                Digital Transformation Roadmap
-              </div>
-              <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
-                <Image
-                  className="w-[0.825rem] h-[0.5rem] relative z-[1]"
-                  width={13}
-                  height={8}
-                  alt=""
-                  src="/vector-21.svg"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="w-[41.125rem] hidden flex-col"
-            data-acc-item
-            data-acc-open
-          >
+          <div>
             <div
-              className="w-[41.125rem] h-[5.125rem] flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-pointer"
-              data-acc-header
-              onClick={onAccordionHeaderClick}
+              className={`w-[41.125rem] flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-pointer [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms]`}
+              onClick={onAccordionHeaderClick1}
             >
-              <div className="h-[4.625rem] w-[41.125rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] px-[2rem] box-border gap-[14.375rem]">
+              <div
+                style={{ ...div }}
+                className="h-[4.625rem] w-[41.125rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] px-[2rem] box-border gap-[14.375rem]"
+              >
                 <div className="w-[41.125rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                <div className="h-[3.125rem] w-[21.938rem] relative leading-[3.125rem] font-medium inline-block shrink-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]">
+                <div
+                  style={{ ...style }}
+                  className="h-[3.125rem] w-[21.938rem] relative leading-[3.125rem] font-medium inline-block shrink-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
+                >
                   Digital Transformation Roadmap
                 </div>
                 <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
@@ -170,59 +154,66 @@ const DigitalTranspormationRoadmap: NextPage<
                   />
                 </div>
               </div>
-              <div className="relative text-[transparent] hidden" />
             </div>
-            <div
-              className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
-              data-acc-content
-            >
-              <div className="[transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden text-[1.125rem] text-color-6 ml:[2rem]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+
+            {/* Accordion content */}
+            {isAccordionOpen && (
+              <div
+                className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
+              >
+                <div
+                  style={{ ...div }}
+                  className="h-[3.125rem] flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
+                >
+                  <h3
+                    className="m-0 h-[3.125rem] w-[26rem] relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]"
+                  >
+                    Digital Transformation Roadmap
+                  </h3>
+                </div>
+                <div
+                  style={{ ...div }}
+                  className="h-[23rem] flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
+                >
+                  <div className="h-[22rem] w-[34.75rem] flex flex-col items-start justify-start gap-[1rem]">
+                    <div className="w-[16.438rem] h-[1.875rem] relative leading-[1.875rem] inline-block shrink-0">
+                      ITOM | ITAM | Risk | Procurement
+                    </div>
+                    <div className="w-[32.25rem] h-[11.75rem] flex flex-col items-start justify-start gap-[0.5rem]">
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        We will analyze and develop a sustainable multi-phase digital
+                        transformation strategy to achieve your business goals.
+                      </div>
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        Our approach includes studying current process documentation,
+                        conducting collaborative cross-functional stakeholder
+                        workshops (i.e. Biz and IT) for clarifications, feedback,
+                        sharing of best practice insights, and prioritization of
+                        initiatives.
+                      </div>
+                    </div>
+                    <div className="w-[34.75rem] h-[6.375rem] flex flex-col items-start justify-start gap-[0.5rem] text-[1.5rem] text-color-5">
+                      <div className="w-[5.813rem] h-[2.5rem] relative leading-[2.5rem] font-semibold inline-block shrink-0 mq450:text-[1.188rem] mq450:leading-[2rem]">
+                        Benefits
+                      </div>
+                      <div className="w-[34.75rem] relative text-[1.125rem] leading-[150%] text-color-6 inline-block">
+                        <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                          <li className="my-[undefined] mx-[undefined]">
+                            Fast time to value
+                          </li>
+                          <li>
+                            Holistic proposal to achieve quick wins and medium-term
+                            initiatives
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
-          <div style={div} className="h-[3.125rem] flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
-            <h3 className="m-0 h-[3.125rem] w-[26rem] relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]" >
-              Digital Transformation Roadmap
-            </h3>
-          </div>
-          <div style={div} className="h-[23rem] flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
-            <div className="h-[22rem] w-[34.75rem] flex flex-col items-start justify-start gap-[1rem]">
-              <div className="w-[16.438rem] h-[1.875rem] relative leading-[1.875rem] inline-block shrink-0">
-                ITOM | ITAM | Risk | Procurement
-              </div>
-              <div className="w-[32.25rem] h-[11.75rem] flex flex-col items-start justify-start gap-[0.5rem]">
-                <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
-                  We will analyze and develop a sustainable multi-phase digital
-                  transformation strategy to achieve your business goals.
-                </div>
-                <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
-                  Our approach includes studying current process documentation,
-                  conduct collaborative cross functional stakeholder workshops
-                  (i.e. Biz and IT) for clarifications, feedback, sharing of
-                  best practice insights and prioritization of initiatives.
-                </div>
-              </div>
-              <div className="w-[34.75rem] h-[6.375rem] flex flex-col items-start justify-start gap-[0.5rem] text-[1.5rem] text-color-5">
-                <div className="w-[5.813rem] h-[2.5rem] relative leading-[2.5rem] font-semibold inline-block shrink-0 mq450:text-[1.188rem] mq450:leading-[2rem]">
-                  Benefits
-                </div>
-                <div className="w-[34.75rem] relative text-[1.125rem] leading-[150%] text-color-6 inline-block">
-                  <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
-                    <li className="my-[undefined] mx-[undefined]">
-                      Fast time to value
-                    </li>
-                    <li>
-                      Holistic proposal to achieve quick wins and medium term
-                      initiatives
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div
             className="w-[41.125rem] h-[5.625rem] flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[1rem] box-border [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] cursor-pointer"
             data-acc-item
@@ -280,10 +271,58 @@ const DigitalTranspormationRoadmap: NextPage<
               className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
               data-acc-content
             >
-              <div className="[transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden mq450:text-[1.188rem] mq450:leading-[2.5rem] mq450:w-[30%] text-[1.125rem] text-color-6 ml:[2rem]" >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+              <div
+                className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
+              >
+                <div
+                  style={{ ...div }}
+                  className="h-[3.125rem] flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
+                >
+                  <h3
+                    className="m-0 h-[3.125rem] w-[26rem] relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]"
+                  >
+                    Digital Transformation Roadmap
+                  </h3>
+                </div>
+                <div
+                  style={{ ...div }}
+                  className="h-[23rem] flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
+                >
+                  <div className="h-[22rem] w-[34.75rem] flex flex-col items-start justify-start gap-[1rem]">
+                    <div className="w-[16.438rem] h-[1.875rem] relative leading-[1.875rem] inline-block shrink-0">
+                      ITOM | ITAM | Risk | Procurement
+                    </div>
+                    <div className="w-[32.25rem] h-[11.75rem] flex flex-col items-start justify-start gap-[0.5rem]">
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        We will analyze and develop a sustainable multi-phase digital
+                        transformation strategy to achieve your business goals.
+                      </div>
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        Our approach includes studying current process documentation,
+                        conducting collaborative cross-functional stakeholder
+                        workshops (i.e. Biz and IT) for clarifications, feedback,
+                        sharing of best practice insights, and prioritization of
+                        initiatives.
+                      </div>
+                    </div>
+                    <div className="w-[34.75rem] h-[6.375rem] flex flex-col items-start justify-start gap-[0.5rem] text-[1.5rem] text-color-5">
+                      <div className="w-[5.813rem] h-[2.5rem] relative leading-[2.5rem] font-semibold inline-block shrink-0 mq450:text-[1.188rem] mq450:leading-[2rem]">
+                        Benefits
+                      </div>
+                      <div className="w-[34.75rem] relative text-[1.125rem] leading-[150%] text-color-6 inline-block">
+                        <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                          <li className="my-[undefined] mx-[undefined]">
+                            Fast time to value
+                          </li>
+                          <li>
+                            Holistic proposal to achieve quick wins and medium-term
+                            initiatives
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -341,10 +380,58 @@ const DigitalTranspormationRoadmap: NextPage<
               className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
               data-acc-content
             >
-              <div className="[transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden mq450:text-[1.188rem] mq450:leading-[2.5rem] mq450:w-[30%] text-[1.125rem] text-color-6 ml:[2rem]" >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+              <div
+                className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
+              >
+                <div
+                  style={{ ...div }}
+                  className="h-[3.125rem] flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
+                >
+                  <h3
+                    className="m-0 h-[3.125rem] w-[26rem] relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]"
+                  >
+                    Digital Transformation Roadmap
+                  </h3>
+                </div>
+                <div
+                  style={{ ...div }}
+                  className="h-[23rem] flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
+                >
+                  <div className="h-[22rem] w-[34.75rem] flex flex-col items-start justify-start gap-[1rem]">
+                    <div className="w-[16.438rem] h-[1.875rem] relative leading-[1.875rem] inline-block shrink-0">
+                      ITOM | ITAM | Risk | Procurement
+                    </div>
+                    <div className="w-[32.25rem] h-[11.75rem] flex flex-col items-start justify-start gap-[0.5rem]">
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        We will analyze and develop a sustainable multi-phase digital
+                        transformation strategy to achieve your business goals.
+                      </div>
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        Our approach includes studying current process documentation,
+                        conducting collaborative cross-functional stakeholder
+                        workshops (i.e. Biz and IT) for clarifications, feedback,
+                        sharing of best practice insights, and prioritization of
+                        initiatives.
+                      </div>
+                    </div>
+                    <div className="w-[34.75rem] h-[6.375rem] flex flex-col items-start justify-start gap-[0.5rem] text-[1.5rem] text-color-5">
+                      <div className="w-[5.813rem] h-[2.5rem] relative leading-[2.5rem] font-semibold inline-block shrink-0 mq450:text-[1.188rem] mq450:leading-[2rem]">
+                        Benefits
+                      </div>
+                      <div className="w-[34.75rem] relative text-[1.125rem] leading-[150%] text-color-6 inline-block">
+                        <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                          <li className="my-[undefined] mx-[undefined]">
+                            Fast time to value
+                          </li>
+                          <li>
+                            Holistic proposal to achieve quick wins and medium-term
+                            initiatives
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -400,10 +487,58 @@ const DigitalTranspormationRoadmap: NextPage<
               className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border gap-[27.375rem] cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
               data-acc-content
             >
-              <div className="[transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden mq450:text-[1.188rem] mq450:leading-[2.5rem] mq450:w-[30%] text-[1.125rem] text-color-6 ml:[2rem]" >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+              <div
+                className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default grid-rows-[0fr] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] accordion__open:grid-rows-[1fr] accordion__close:grid-rows-[0fr]"
+              >
+                <div
+                  style={{ ...div }}
+                  className="h-[3.125rem] flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
+                >
+                  <h3
+                    className="m-0 h-[3.125rem] w-[26rem] relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]"
+                  >
+                    Digital Transformation Roadmap
+                  </h3>
+                </div>
+                <div
+                  style={{ ...div }}
+                  className="h-[23rem] flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
+                >
+                  <div className="h-[22rem] w-[34.75rem] flex flex-col items-start justify-start gap-[1rem]">
+                    <div className="w-[16.438rem] h-[1.875rem] relative leading-[1.875rem] inline-block shrink-0">
+                      ITOM | ITAM | Risk | Procurement
+                    </div>
+                    <div className="w-[32.25rem] h-[11.75rem] flex flex-col items-start justify-start gap-[0.5rem]">
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        We will analyze and develop a sustainable multi-phase digital
+                        transformation strategy to achieve your business goals.
+                      </div>
+                      <div className="w-[32.25rem] relative leading-[1.875rem] inline-block">
+                        Our approach includes studying current process documentation,
+                        conducting collaborative cross-functional stakeholder
+                        workshops (i.e. Biz and IT) for clarifications, feedback,
+                        sharing of best practice insights, and prioritization of
+                        initiatives.
+                      </div>
+                    </div>
+                    <div className="w-[34.75rem] h-[6.375rem] flex flex-col items-start justify-start gap-[0.5rem] text-[1.5rem] text-color-5">
+                      <div className="w-[5.813rem] h-[2.5rem] relative leading-[2.5rem] font-semibold inline-block shrink-0 mq450:text-[1.188rem] mq450:leading-[2rem]">
+                        Benefits
+                      </div>
+                      <div className="w-[34.75rem] relative text-[1.125rem] leading-[150%] text-color-6 inline-block">
+                        <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                          <li className="my-[undefined] mx-[undefined]">
+                            Fast time to value
+                          </li>
+                          <li>
+                            Holistic proposal to achieve quick wins and medium-term
+                            initiatives
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
