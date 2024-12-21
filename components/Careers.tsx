@@ -13,11 +13,11 @@ const Careers: NextPage<CareersType> = ({ className = "" }) => {
       <div className="flex-1 bg-color flex flex-col items-start justify-start pt-[5.5rem] px-[4.375rem] pb-[6.75rem] box-border relative gap-[1.5rem] max-w-full mq800:pt-[3.563rem] mq800:px-[2.188rem] mq800:pb-[4.375rem] mq800:box-border">
 
         <div className="w-[90rem] h-[42.688rem] relative bg-color hidden max-w-full z-[0]" />
-        <div className="w-[33.25rem] flex flex-col items-start justify-start gap-[1rem] max-w-full">
-          <div className="careers-title "> <h1 className="m-0 relative text-inherit leading-[120%] capitalize font-bold font-inherit z-[2] mq800:text-[2.688rem] mq800:leading-[3.25rem] mq450:text-[2rem] mq450:leading-[2.438rem]">
+        <div className="w-[33.25rem] flex flex-col items-start justify-start gap-[1rem] max-w-full mq1050:items-center mq1050:justify-center mq1050:w-[100%]">
+          <div > <h1 className="m-0 relative text-inherit leading-[120%] capitalize font-bold font-inherit z-[2] mq800:text-[2.688rem] mq800:leading-[3.25rem] mq450:text-[2rem] mq450:leading-[2.438rem]">
             Careers
           </h1></div>
-          <div className="relative text-[1.125rem] leading-[1.875rem] z-[2]">
+          <div className="relative text-[1.125rem] leading-[1.875rem] z-[2] mq1050:text-center">
             <p className="m-0">
               Are you an exceptional talent passionate about ServiceNow and
               looking for an exciting opportunity in the heart of Southeast
@@ -54,7 +54,7 @@ const Careers: NextPage<CareersType> = ({ className = "" }) => {
             src="/dots.svg"
           />
           <Image
-            className="absolute h-full top-[0rem] bottom-[0rem] left-[45.5rem] max-h-full w-[44.5rem] object-cover z-[2]"
+            className="absolute h-full top-[0rem] bottom-[0rem] left-[45.5rem] max-h-full w-[44.5rem] object-cover z-[2] mq1050:hidden"
             width={712}
             height={683}
             alt=""

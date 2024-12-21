@@ -17,7 +17,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
   useEffect(() => {
     const checkScreen = () => {
-      if (window.innerWidth < 1034) {
+      if (window.innerWidth < 1240) {
         setModal(true);
         setStyle({ padding: "0px", margin: "0px" }); // Corrected: Using an object for the style.
       } else {
@@ -71,9 +71,8 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
   return (
     <section className="self-stretch  flex flex-row items-start justify-start pt-4 px-4 lg:px-[4.375rem] pb-4 lg:pb-[6.812rem] box-border max-w-full  flex items-center mr-[50px] p-0 m-0" style={style}>
-      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar
-      ">
-        <div className={`flex items-center mt-[-5px] relative ml-[5%]`}>
+      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar">
+        <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem]`}>
           <Image
             className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1]"
             loading="lazy"
@@ -128,8 +127,8 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                         Service
                       </a>
                       <Image
-                        className={`w-[0.588rem] h-[0.356rem] relative transition-transform duration-300 ${serviceDropdown ? 'rotate-180' : ''}`}
-                        width={9}
+                        className={`w-[0.8rem] h-[1rem] relative transition-transform duration-300 ${serviceDropdown ? 'rotate-180' : ''}`}
+                        width={110}
                         height={6}
                         alt=""
                         src="/sub-menu-icons.svg"
@@ -170,7 +169,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                         Resources
                       </a>
                       <Image
-                        className={`w-[0.456rem] h-[0.275rem] relative transition-transform duration-300 ${resourceDropdown ? 'rotate-180' : ''}`}
+                        className={`w-[0.5rem] h-[0.5rem] relative transition-transform duration-300 ${resourceDropdown ? 'rotate-180' : ''}`}
                         width={7}
                         height={4}
                         alt=""
@@ -219,7 +218,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
         }
         {
           modal && isMenuOpen && (
-            <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 " style={{ backgroundColor: "#0000009e" }}>
+            <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 left-[-1rem] " style={{ backgroundColor: "#0000009e" }}>
               <div className="flex flex-col py-6 px-4 bg-transparent items-center">
                 <a href="/" className="[text-decoration:none] relative font-semibold text-color-4 py-4 border-b border-gray-700 cursor-pointer">
                   Home

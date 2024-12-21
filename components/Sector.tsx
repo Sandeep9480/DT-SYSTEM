@@ -14,8 +14,7 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
       if (window.innerWidth < 450) {
 
         setStyle({
-          alignItems: "center",
-          justifyContent: "center"
+
         }) // Corrected: Using an object for the style.
       } else {
 
@@ -35,14 +34,14 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
     <section
       className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[0.25rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className}`}
     >
-      <div className="flex-1 flex flex-row items-start justify-start gap-[5.437rem] max-w-full mq800:gap-[2.688rem] mq450:gap-[1.375rem] mq1350:flex-wrap">
-        <div className="flex-1 flex flex-col items-start justify-start pt-[8.187rem] px-[0rem] pb-[0rem] box-border min-w-[27.688rem] max-w-full mq800:min-w-full mq450:pt-[5.313rem] mq450:box-border">
-          <div className="self-stretch flex flex-col items-start justify-start gap-[1rem] mq800:items-center">
+      <div className="flex-1 flex flex-row items-start justify-start gap-[5.437rem] max-w-full mq800:gap-[3.688rem] mq450:gap-[3.375rem] mq1350:flex-wrap mq1050:flex-col mq1050:gap-[3rem] mq1050:items-center mq1050:justify-center gap-[3rem] ">
+        <div className="flex-1 flex flex-col items-start justify-start pt-[8.187rem] px-[0rem] pb-[0rem] box-border min-w-[27.688rem] max-w-full mq800:min-w-full mq450:pt-[5.313rem] mq450:box-border mq1050:pt-[0]">
+          <div className="self-stretch flex flex-col items-start justify-start gap-[1rem] mq1050:items-center ">
             <h1 className="m-0 relative text-inherit leading-[120%] capitalize font-bold font-inherit mq800:text-[2.688rem] mq800:leading-[3.25rem] mq450:text-[2rem] mq450:leading-[2.438rem]">
               Sectors
             </h1>
-            <div className="self-stretch flex flex-col items-start justify-start gap-[2.187rem] text-[1.125rem] text-color-6 mq800:gap-[1.063rem]  mq800:items-center">
-              <div className="relative leading-[1.875rem] para">
+            <div className="self-stretch flex flex-col items-start justify-start gap-[2.187rem] text-[1.125rem] text-color-6 mq800:gap-[3rem]  mq1050:items-center gap-[3rem]">
+              <div className="relative leading-[1.875rem] para mq1050:text-center w-[85%]">
                 Lorem ipsum dolor sit amet consectetur. Nisl diam ante urna diam
                 sed amet turpis justo. A ultrices at tempor consectetur in vitae
                 duis. Neque hac nulla pellentesque tortor pretium. Iaculis urna
@@ -66,8 +65,8 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
             </div>
           </div>
         </div>
-        <div style={{ resize: "none", scrollbarWidth: "none" }} className="h-[36.5rem] overflow-y-auto flex flex-col items-start justify-start gap-[1.5rem] max-w-full text-[2rem] text-color-5 mq800:min-w-full mq450:h-auto mq1350:flex-1">
-          <div className="self-stretch flex flex-col items-start justify-start gap-[1.5rem] shrink-0 max-w-full">
+        <div style={{ resize: "none", scrollbarWidth: "none" }} className="h-[36.5rem] overflow-y-auto flex flex-col gap-[1.5rem] max-w-full text-[2rem] text-color-5  mq450:h-auto ">
+          <div className="self-stretch flex flex-col  gap-[1.5rem] shrink-0 ">
 
             <SectorRight
               groupDivPadding="1.812rem 4.125rem"

@@ -70,13 +70,10 @@ body {
     padding: 0rem;
   }
 
-  .navbar {
-    margin-top: 1.8rem
-  }
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .para {
     display: none;
   }
@@ -109,4 +106,18 @@ body {
 
 
 
+}
+
+@media screen and (max-width: 1240px) {
+  .header-navbar {
+    margin-left: 1rem;
+  }
+}
+
+/* Custom media query for screens smaller than 500px */
+@media screen and (max-width: 500px) {
+  .index-title {
+    font-size: 2.5rem;
+    line-height: 4rem;
+  }
 }

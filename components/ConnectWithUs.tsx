@@ -29,10 +29,10 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
   }, []);
 
   return (
-    <div className="w-full mx-auto px-8 flex flex-row bg-none gap-[10rem]">
+    <div className="w-full mx-auto px-8 flex flex-row bg-none gap-[10rem] mq1050:flex-col-reverse mq1050:gap-[4rem] ">
       {/* Left side - Form */}
-      <div className="flex-1">
-        <form className="grid grid-cols-2 gap-x-10 gap-y-10 form">
+      <div className="flex-1 ">
+        <form className="grid grid-cols-2 gap-x-10 gap-y-10 form pl-[2rem] mq1050:w-[90%] mq450:w-[80%]">
           <div className="flex flex-col">
             <input
               type="text"
@@ -91,13 +91,13 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
       </div>
 
       {/* Right side - Text */}
-      <div className="flex-1 ml-0 md:ml-[10rem]  md:block mq500:hidden" style={style}>
-        <h2 className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0">
+      <div className="flex-1 ml-0 md:ml-[10rem]  md:block mq1050:flex mq1050:items-center mq1050:justify-center " >
+        <h2 className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0 mq450:text-[2rem] mq450:leading-[2.438rem] ">
           Connect with us!
           <br />
-          Let's Grow..
+          <span className="mq1050:hidden"> Let's Grow..</span>
         </h2>
-        <p className="text-gray-800 mt-6 text-lg leading-relaxed max-w-[70%] w-[60%] opacity-50">
+        <p className="text-gray-800 mt-6 text-lg leading-relaxed max-w-[70%] w-[60%] opacity-50 mq1050:hidden">
           We prioritize responding to your inquiries promptly to ensure you receive the assistance you need in a timely manner.
         </p>
       </div>

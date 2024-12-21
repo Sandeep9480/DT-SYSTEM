@@ -11,22 +11,22 @@ module.exports = {
         ghostwhite: "#f8fbff",
         "color-6": "#8f8f8f",
         gray: {
-          "100": "#fafafa",
-          "200": "#111d15",
-          "300": "#101914",
-          "400": "#0d062d",
-          "500": "rgba(17, 17, 17, 0.12)",
-          "600": "rgba(0, 0, 0, 0.15)",
-          "700": "rgba(13, 6, 45, 0.16)",
+          100: "#fafafa",
+          200: "#111d15",
+          300: "#101914",
+          400: "#0d062d",
+          500: "rgba(17, 17, 17, 0.12)",
+          600: "rgba(0, 0, 0, 0.15)",
+          700: "rgba(13, 6, 45, 0.16)",
         },
         color: "#213a1f",
         darkolivegreen: {
-          "100": "#546e52",
-          "200": "rgba(84, 110, 82, 0.09)",
+          100: "#546e52",
+          200: "rgba(84, 110, 82, 0.09)",
         },
         gainsboro: {
-          "100": "#e6e6e6",
-          "200": "rgba(230, 230, 230, 0.09)",
+          100: "#e6e6e6",
+          200: "rgba(230, 230, 230, 0.09)",
         },
         "color-5": "#5d5f61",
         "color-4": "#fcfcea",
@@ -80,13 +80,22 @@ module.exports = {
         raw: "screen and (max-width: 1050px)",
       },
       mq800: {
-        raw: "screen and (max-width: 800px)",
+        raw: "screen and (max-width: 900px)",
       },
       mq750: {
         raw: "screen and (max-width: 750px)",
       },
+      mq500: {
+        raw: "screen and (max-width: 500px)",
+      },
       mq450: {
         raw: "screen and (max-width: 450px)",
+      },
+      mq1050: {
+        raw: "screen and (max-width: 1210px)",
+      },
+      mq750: {
+        raw: "screen and (max-width: 750px)",
       },
     },
   },

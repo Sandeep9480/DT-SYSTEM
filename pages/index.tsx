@@ -26,7 +26,7 @@ const Home: NextPage = () => {
       <div className="flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[13.093rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[8.5rem] mq800:box-border">
         <div className="flex flex-col items-start justify-start gap-[1rem] max-w-full">
           <div className="flex flex-col items-start justify-start gap-[0.5rem] max-w-full">
-            <h1 className="m-0 relative text-inherit leading-[5rem] capitalize font-bold font-inherit z-[1] mq800:text-[3.625rem] mq800:leading-[4rem] mq450:text-[2rem] mq450:leading-[3rem]">
+            <h1 className="m-0 relative text-inherit leading-[5rem] capitalize font-bold font-inherit z-[1] mq800:text-[3rem] mq800:leading-[4rem] mq500:text-[2.5rem]  index-title">
               <p className="m-0">Transformation</p>
               <p className="m-0">Delivered</p>
 
