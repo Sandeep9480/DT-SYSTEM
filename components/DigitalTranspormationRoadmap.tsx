@@ -203,7 +203,7 @@ const DigitalTranspormationRoadmap: NextPage<
           {accordionData.map((item) => (
             <div key={item.id}>
               <div
-                className="w-[41.125rem] h-auto flex flex-col items-start justify-start pt-0 px-0 pb-[1rem] box-border cursor-pointer"
+                className="w-[46.125rem] h-auto flex flex-col items-start justify-start pt-0 px-0 pb-[1rem] box-border cursor-pointer "
                 data-acc-item
                 data-acc-header
                 data-acc-original

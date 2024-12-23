@@ -188,6 +188,40 @@ const ServicesImplementation: NextPage = () => {
     }
   ];
 
+  const [style, setStyle] = useState({});
+  const [div, setDiv] = useState({});
+  const [secondDiv, setSecondDiv] = useState({})
+  const [img, setImg] = useState({})
+  useEffect(() => {
+    const checkScreen = () => {
+      if (window.innerWidth < 500) {
+        setDiv({
+          padding: "0",
+          gap: "0.5rem"
+        })
+        setImg({
+          height: "30%"
+        })
+        setSecondDiv({
+          gap: "1rem",
+          padding: "0"
+        })
+        setStyle({ width: "40%" }); // Corrected: Using an object for the style.
+
+      } else {
+
+        setStyle({}); // Reset style for larger screens.
+      }
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+
+    return () => {
+      window.removeEventListener("resize", checkScreen);
+    };
+  }, []);
+
 
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal]">
@@ -252,14 +286,37 @@ const ServicesImplementation: NextPage = () => {
                       alt=""
                       src={item.image}
                     />
-                    <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
-                      <ItServiceManagemant
-                        text={item.content.text}
-                        deliverResilientITServices={item.content.deliverResilientITServices}
-                        unburdenYourITServicesStaff={item.content.unburdenYourITServicesStaff}
-                        createResilientAdaptablePeople1={item.content.createResilientAdaptablePeople1}
-                        deliverITServicesOnASingle1={item.content.deliverITServicesOnASingle1}
-                      />
+
+                    <div className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms]">
+                      <div style={{ ...div }} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                        <h1
+                          className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap opacity-40"
+                        >                          {item.content.text}
+                        </h1>
+                      </div>
+                      <div style={{ ...div }} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
+                        <div className="flex flex-col items-start justify-start gap-[1rem]">
+                          <div className="flex flex-col gap-[0.5rem]">
+
+                            <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[50%]">
+                              {item.content.deliverResilientITServices}
+                            </div>
+
+                          </div>
+                          <div className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5">
+                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]">
+                              Benefits
+                            </div>
+                            <div className="relative text-[1.125rem] leading-[150%] text-color-6">
+                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                                <li className="my-[undefined] mx-[undefined]">{item.content.unburdenYourITServicesStaff}</li>
+                                <li className="my-[undefined] mx-[undefined]">{item.content.createResilientAdaptablePeople1}</li>
+                                <li className="my-[undefined] mx-[undefined]">{item.content.deliverITServicesOnASingle1}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
