@@ -228,7 +228,7 @@ const Sectors: NextPage = () => {
 
                           </div>
                           <div className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5">
-                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem] opacity-70" style={{ fontFamily: "Archivo" }} >
+                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem] " style={{ fontFamily: "Archivo" }} >
                               Benefits
                             </div>
                             <div className="relative text-[1.125rem] leading-[150%] text-color-6">

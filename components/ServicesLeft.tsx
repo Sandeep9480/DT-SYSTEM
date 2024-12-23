@@ -52,7 +52,7 @@ const ServicesLeft: NextPage<ServicesLeftType> = ({
 
         {/* Hover Content */}
         <div className="absolute inset-0 flex flex-col items-start justify-center gap-4 p-8 z-[3] opacity-0 transform translate-y-8 group-hover:opacity-100 group-hover:scale-105 group-hover:translate-y-0 transition-all duration-500 ease-in-out bg-[#1E3A2F]/90 group-hover:p-10">
-          <h1 className="text-[3rem] font-bold leading-[1.2] sm:text-[2rem] m-0rem">
+          <h1 className="text-[3rem] font-bold leading-[1.2] sm:text-[2rem] m-0">
             Advisory
           </h1>
           <p className="text-[1.2rem] leading-[1.875rem] sm:text-[1rem] m-0">

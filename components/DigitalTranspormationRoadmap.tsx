@@ -1,6 +1,11 @@
+"use client"
+
 import type { NextPage } from "next";
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export type DigitalTranspormationRoadmapType = {
   className?: string;
@@ -184,26 +189,57 @@ const DigitalTranspormationRoadmap: NextPage<
     }
   ];
 
+  // Add refs for scroll detection
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+
   return (
-    <section
+    <motion.section
+      ref={sectionRef}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],  // Smooth cubic-bezier easing
+        staggerChildren: 0.1
+      }}
       className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[3.813rem] mq800:box-border mq1125:pb-[5.875rem] mq1125:box-border ${className}`}
     >
-      <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap" >
-        <Image
-          style={img}
-          className="w-[34.25rem] relative rounded-11xl max-h-full object-cover max-w-full mq1325:flex-1"
-          loading="lazy"
-          width={548}
-          height={834}
-          alt=""
-          src={sideImage}
-        />
+      <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={sideImage}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 30 }}
+            transition={{
+              duration: 1,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+          >
+            <Image
+              style={img}
+              className="w-[34.25rem] relative rounded-11xl max-h-full object-cover max-w-full mq1325:flex-1"
+              loading="lazy"
+              width={548}
+              height={834}
+              alt=""
+              src={sideImage}
+            />
+          </motion.div>
+        </AnimatePresence>
+
         <div
           className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full"
           data-acc-group
         >
-          {accordionData.map((item) => (
-            <div key={item.id}>
+          {accordionData.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 1, delay: index * 0.4 }}
+            >
               <div
                 className="w-[46.125rem] h-auto flex flex-col items-start justify-start pt-0 px-0 pb-[1rem] box-border cursor-pointer "
                 data-acc-item
@@ -230,50 +266,102 @@ const DigitalTranspormationRoadmap: NextPage<
                   </div>
                 </div>
 
-                {openAccordion === item.id && (
-                  <div className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms]">
-                    <div style={{ ...div }} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
-                      <h3 className="m-0 relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]">
-                        {item.content.heading}
-                      </h3>
-                    </div>
-                    <div style={{ ...div }} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
-                      <div className="flex flex-col items-start justify-start gap-[1rem]">
-                        {item.content.tags && (
-                          <div className="relative leading-[1.875rem]">
-                            {item.content.tags}
-                          </div>
-                        )}
-                        <div className="flex flex-col gap-[0.5rem]">
-                          {item.content.description.map((desc, index) => (
-                            <div key={index} className="relative leading-[1.875rem]">
-                              {desc}
+                <AnimatePresence>
+                  {openAccordion === item.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{
+                        height: { duration: 1, ease: [0.25, 0.1, 0.25, 1] },
+                        opacity: { duration: 1, delay: 0.4 }
+                      }}
+                      className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 1,
+                          delay: index * 0.5,
+                          ease: [0.25, 0.1, 0.25, 1]
+                        }}
+                        style={{ ...div }}
+                        className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
+                      >
+                        <h3 className="m-0 relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]">
+                          {item.content.heading}
+                        </h3>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        style={{ ...div }}
+                        className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6"
+                      >
+                        <div className="flex flex-col items-start justify-start gap-[1rem]">
+                          {item.content.tags && (
+                            <div className="relative leading-[1.875rem]">
+                              {item.content.tags}
                             </div>
-                          ))}
-                        </div>
-                        <div className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5">
-                          <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]">
-                            Benefits
+                          )}
+                          <div className="flex flex-col gap-[0.5rem]">
+                            {item.content.description.map((desc, index) => (
+                              <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 1.3 + index * 0.5 }}
+                                className="relative leading-[1.875rem]"
+                              >
+                                {desc}
+                              </motion.div>
+                            ))}
                           </div>
-                          <div className="relative text-[1.125rem] leading-[150%] text-color-6">
-                            <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
-                              {item.content.benefits.map((benefit, index) => (
-                                <li key={index}>{benefit}</li>
-                              ))}
-                            </ul>
-                          </div>
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.3 }}
+                            className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
+                          >
+                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]">
+                              Benefits
+                            </div>
+                            <div className="relative text-[1.125rem] leading-[150%] text-color-6">
+                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                                {item.content.benefits.map((benefit, index) => (
+                                  <motion.li
+                                    key={index}
+                                    initial={{ opacity: 0, x: -15 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{
+                                      duration: 1,
+                                      delay: 1.5 + index * 0.7,
+                                      ease: [0.5, 0.3, 0.5, 1.3]
+                                    }}
+                                  >
+                                    {benefit}
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </div>
+                          </motion.div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 export default DigitalTranspormationRoadmap;
+
+
