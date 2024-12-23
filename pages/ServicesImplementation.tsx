@@ -102,10 +102,10 @@ const ServicesImplementation: NextPage = () => {
       image: "/smarthometechnologywallsystemandcouplewith20231127051651utc-1@2x.png",
       content: {
         text: "IT Service Management (ITSM)",
-        deliverResilientITServices: "Deliver resilient IT services and create experiences that help your teams be more productive...",
+        deliverResilientITServices: "Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning.",
         unburdenYourITServicesStaff: "Unburden your IT services staff and boost IT productivity",
         createResilientAdaptablePeople1: "Create resilient & adaptable people first experiences",
-        deliverITServicesOnASingle1: "Deliver IT services on a single system of engagement..."
+        deliverITServicesOnASingle1: "Deliver IT services on a single system of engagement by using workflows to synthesise your shared data and analytics"
       }
     },
     {
@@ -277,9 +277,10 @@ const ServicesImplementation: NextPage = () => {
                   className={`w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden ${openAccordion === item.id ? "h-auto" : "h-0"}`}
                   data-acc-content
                 >
-                  <div className="flex md:flex-row items-center gap-6 responsive">
+                  <div className="flex md:flex-row items-start justify-start gap-6 responsive">
                     <Image
-                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
+                      style={{ margin: 0, marginTop: "2rem", marginLeft: "-5rem" }}
+                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img "
                       loading="lazy"
                       width={532}
                       height={400}
@@ -298,17 +299,17 @@ const ServicesImplementation: NextPage = () => {
                         <div className="flex flex-col items-start justify-start gap-[1rem]">
                           <div className="flex flex-col gap-[0.5rem]">
 
-                            <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[50%]">
+                            <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[50%]" style={{ fontFamily: "Archivo" }}>
                               {item.content.deliverResilientITServices}
                             </div>
 
                           </div>
                           <div className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5">
-                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]">
+                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem] opacity-70" style={{ fontFamily: "Archivo" }} >
                               Benefits
                             </div>
-                            <div className="relative text-[1.125rem] leading-[150%] text-color-6">
-                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                            <div className="relative text-[1.125rem] leading-[150%] text-color-6 ">
+                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]" style={{ fontFamily: "Archivo" }}>
                                 <li className="my-[undefined] mx-[undefined]">{item.content.unburdenYourITServicesStaff}</li>
                                 <li className="my-[undefined] mx-[undefined]">{item.content.createResilientAdaptablePeople1}</li>
                                 <li className="my-[undefined] mx-[undefined]">{item.content.deliverITServicesOnASingle1}</li>

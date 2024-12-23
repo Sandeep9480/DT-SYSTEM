@@ -74,7 +74,9 @@ const DigitalTranspormationRoadmap: NextPage<
   const [openAccordion, setOpenAccordion] = useState<number | null>(1); // Allow null and number
 
   const handleAccordionToggle = (index: number): void => {
-    setOpenAccordion((prevIndex) => (prevIndex === index ? null : index));
+    if (openAccordion !== index) {
+      setOpenAccordion(index);
+    }
   };
   const [style, setStyle] = useState({});
   const [div, setDiv] = useState({});
@@ -213,7 +215,8 @@ const DigitalTranspormationRoadmap: NextPage<
                 }}
               >
                 <div className="h-[4.625rem] w-full rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border">
-                  <div className="font-medium font-archivo text-[1.5rem] bg-transparent leading-[3.125rem] text-color-6 text-left truncate mq450:text-[1.188rem] mq450:leading-[2.5rem]">
+                  <div className={`font-medium font-archivo text-[1.5rem] bg-transparent leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'
+                    } text-left truncate mq450:text-[1.188rem] mq450:leading-[2.5rem]`}>
                     {item.title}
                   </div>
                   <div className="h-[1.813rem] w-[0.825rem] flex items-center justify-center box-border">
