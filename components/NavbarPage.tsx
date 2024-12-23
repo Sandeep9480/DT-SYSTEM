@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from 'next/router';
 
@@ -48,6 +48,10 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
   const [serviceDropdown, setServiceDropdown] = useState(false);
   const [resourceDropdown, setResourceDropdown] = useState(false);
 
+  // Add refs for the dropdowns
+  const serviceDropdownRef = useRef<HTMLDivElement>(null);
+  const resourceDropdownRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 1240) {
@@ -65,6 +69,23 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
     return () => {
       window.removeEventListener("resize", checkScreen);
+    };
+  }, []);
+
+  // Add click outside handler
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (serviceDropdownRef.current && !serviceDropdownRef.current.contains(event.target as Node)) {
+        setServiceDropdown(false);
+      }
+      if (resourceDropdownRef.current && !resourceDropdownRef.current.contains(event.target as Node)) {
+        setResourceDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -147,7 +168,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                 >
                   Why Us
                 </button>
-                <div className="relative flex flex-row items-start justify-start gap-[0.25rem] z-[1]">
+                <div className="relative flex flex-row items-start justify-start gap-[0.25rem] z-[1]" ref={serviceDropdownRef}>
                   <div
                     className="flex items-center gap-1 cursor-pointer justify-center"
                     onClick={toggleServiceDropdown}
@@ -207,7 +228,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                 >
                   Careers
                 </button>
-                <div className="flex flex-row items-start justify-start gap-[0.375rem] z-[1] relative">
+                <div className="flex flex-row items-start justify-start gap-[0.375rem] z-[1] relative" ref={resourceDropdownRef}>
                   <div
                     className="flex items-center gap-1 cursor-pointer"
                     onClick={toggleResourceDropdown}
@@ -216,7 +237,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                       Resources
                     </a>
                     <Image
-                      className={`w-[0.5rem] h-[0.5rem] relative transition-transform duration-300 ${resourceDropdown ? 'rotate-180' : ''}`}
+                      className={`w-[0.8rem] h-[1rem] relative transition-transform duration-300 ${resourceDropdown ? 'rotate-180' : ''}`}
                       width={7}
                       height={4}
                       alt=""
