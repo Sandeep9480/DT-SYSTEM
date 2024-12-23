@@ -104,15 +104,16 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
     >
       <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar">
         <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem]`}>
-          <Image
-            className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1]"
-            loading="lazy"
-            width={203}
-            height={24}
-            alt=""
-            src="/dt-systems.svg"
-            onClick={onDTSYSTEMSClick}
-          />
+          <a href="/">
+            <Image
+              className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1]"
+              loading="lazy"
+              width={203}
+              height={24}
+              alt=""
+              src="/dt-systems.svg"
+            />
+          </a>
         </div>
 
         {modal && (
@@ -164,14 +165,31 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                     />
                   </div>
                   {serviceDropdown && (
-                    <div className="absolute top-full left-0 bg-white rounded-md shadow-lg mt-2">
-                      <a style={{ textDecoration: 'none' }} href="/services-advisory" className="block py-2 px-4 text-gray-800 hover:bg-gray-100 cursor-pointer whitespace-nowrap">
+                    <div
+                      className="absolute top-full right-8rem bg-white shadow-lg mt-2 p-4 rounded-lg"
+                      style={{
+                        borderTopLeftRadius: "0",   // Top-left corner
+                        borderBottomRightRadius: "0", // Bottom-right corner
+                        borderTopRightRadius: "1rem",      // Top-right corner
+                        borderBottomLeftRadius: "1rem"     // Bottom-left corner
+                      }}
+                    >
+                      <a
+                        href="/services-advisory"
+                        className="block py-2 px-4 text-gray-800 hover:bg-orange-200 cursor-pointer whitespace-nowrap"
+                        style={{ textDecoration: "none" }}
+                      >
                         Advisory
                       </a>
-                      <a style={{ textDecoration: 'none' }} href="/ServicesImplementation" className="block py-2 px-4 text-gray-800 hover:bg-gray-100 cursor-pointer whitespace-nowrap">
+                      <a
+                        href="/ServicesImplementation"
+                        className="block py-2 px-4 text-gray-800 hover:bg-orange-200 cursor-pointer whitespace-nowrap"
+                        style={{ textDecoration: "none" }}
+                      >
                         Implementation
                       </a>
                     </div>
+
                   )}
                 </div>
                 <div className="flex flex-row items-start justify-start z-[1]">
@@ -206,14 +224,34 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                     />
                   </div>
                   {resourceDropdown && (
-                    <div className="absolute top-full right-0 bg-white rounded-md shadow-lg mt-2 mr-[30px]">
-                      <a className="block py-2 px-4 text-gray-800 hover:bg-gray-100 cursor-pointer whitespace-nowrap">
+                    <div
+                      className="absolute top-full right-8rem bg-white shadow-lg mt-2 p-4 rounded-lg"
+                      style={{
+                        borderTopLeftRadius: "0",   // Top-left corner
+                        borderBottomRightRadius: "0", // Bottom-right corner
+                        borderTopRightRadius: "1rem", // Top-right corner
+                        borderBottomLeftRadius: "1rem" // Bottom-left corner
+                      }}
+                    >
+                      <a
+                        className="block py-2 px-4 text-gray-800 hover:bg-orange-200 cursor-pointer whitespace-nowrap"
+                        href="/blog"
+                        style={{ textDecoration: "none" }}
+                      >
                         Blog
                       </a>
-                      <a className="block py-2 px-4 text-gray-800 hover:bg-gray-100 cursor-pointer whitespace-nowrap">
+                      <a
+                        className="block py-2 px-4 text-gray-800 hover:bg-orange-200 cursor-pointer whitespace-nowrap"
+                        href="/partners"
+                        style={{ textDecoration: "none" }}
+                      >
                         Partners
                       </a>
-                      <a className="block py-2 px-4 text-gray-800 hover:bg-gray-100 cursor-pointer whitespace-nowrap">
+                      <a
+                        className="block py-2 px-4 text-gray-800 hover:bg-orange-200 cursor-pointer whitespace-nowrap"
+                        href="/case-studies"
+                        style={{ textDecoration: "none" }}
+                      >
                         Case Studies
                       </a>
                     </div>

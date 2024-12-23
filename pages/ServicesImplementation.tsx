@@ -242,6 +242,12 @@ const ServicesImplementation: NextPage = () => {
         heroTitle="Implementation Services"
         homeServiceAdvisory="Home • Service • Implementation"
       />
+      <div className="w-[54.813rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block max-w-full font-archivo text-[1.125rem] text-color-6 ml-[4.375rem] mt-[0rem] mb-[4rem]" >
+        The following are the implementation services we can deliver to help you
+        realise your strategic goals. They also set the foundation to approach
+        custom automated workflows, e.g. loan operations, claims management,
+        etc.
+      </div>
       <motion.section
         ref={sectionRef}
         initial="hidden"
