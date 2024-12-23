@@ -70,6 +70,8 @@ const ItServiceManagemant: NextPage<ItServiceManagemant> = ({
     };
   }, [unburdenYourITContainerWidth]);
 
+  console.log(createResilientAdaptablePeople1);
+
   return (
     <div
       className={` w-[51.5rem] h-[21.25rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border text-left text-[1.75rem] text-color-5 font-archivo mq800:justify-start mq800:p-[0]  ${className}  `}
@@ -79,12 +81,11 @@ const ItServiceManagemant: NextPage<ItServiceManagemant> = ({
         className="h-[21.25rem] w-[37.75rem] flex flex-col items-start justify-start gap-[1rem]"
         style={frameDiv2Style}
       >
-        <h3
-          className="m-0 w-[24.813rem] h-[3.125rem] relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem]"
-          style={textStyle}
+        <h1
+          className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap opacity-40"
         >
           {text}
-        </h3>
+        </h1>
         <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[50%]">
           {deliverResilientITServices}
         </div>

@@ -16,7 +16,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       max-[450px]:pt-10
       ${className}`}
     >
-      <div className="w-full grid grid-cols-4 gap-[4.481rem] max-w-full 
+      <div className="w-full grid grid-cols-5 gap-[4.481rem] max-w-full 
         lg:grid-cols-2 sm:grid-cols-1 
         lg:gap-8 md:gap-6 sm:gap-8
         max-[450px]:gap-12">
@@ -86,6 +86,10 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
               <div className="relative leading-[1.875rem] z-[1]">Partner Network</div>
             </div>
           </div>
+
+        </div>
+
+        <div className="flex flex-row justify-between gap-8 sm:gap-4">
           <div className="flex flex-col items-start justify-start gap-[1.5rem]">
             <div className="relative leading-[1.875rem] font-semibold z-[1]">
               Resources
