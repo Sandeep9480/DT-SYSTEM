@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       <div className="w-[0.063rem] h-[5.75rem] relative border-gray-600 border-r-[1px] border-solid box-border hidden z-[2]" />
       <div className="w-[0.063rem] h-[5.75rem] relative border-gray-600 border-r-[1px] border-solid box-border hidden z-[3]" />
       <div className="w-[0.063rem] h-[5.75rem] relative border-gray-600 border-r-[1px] border-solid box-border hidden z-[4]" />
-      <div className="flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[13.093rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[8.5rem] mq800:box-border">
+      <div className="flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[13.093rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[8.5rem] mq800:box-border mt-[6rem]">
         <div className="flex flex-col items-start justify-start gap-[1rem] max-w-full">
           <div className="flex flex-col items-start justify-start gap-[0.5rem] max-w-full">
             <h1 className="m-0 relative text-inherit leading-[5rem] capitalize font-bold font-inherit z-[1] mq800:text-[3rem] mq800:leading-[4rem] mq500:text-[2.5rem]  index-title">

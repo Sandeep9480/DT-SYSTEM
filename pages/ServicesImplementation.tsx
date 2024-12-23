@@ -33,9 +33,9 @@ const ServicesImplementation: NextPage = () => {
   const [accordionOpen7, setAccordionOpen7] = useState(false);
 
 
-  const handleAccordionToggle = () => {
-    setAccordionOpen((prev) => !prev);
-  };
+  // const handleAccordionToggle = () => {
+  //   setAccordionOpen((prev) => !prev);
+  // };
   const handleAccordionToggle2 = () => {
     setAccordionOpen2((prev) => !prev);
   };
@@ -53,6 +53,14 @@ const ServicesImplementation: NextPage = () => {
   };
   const handleAccordionToggle7 = () => {
     setAccordionOpen7((prev) => !prev);
+  };
+
+
+
+  const [openAccordion, setOpenAccordion] = useState<number | null>(1); // Allow null and number
+
+  const handleAccordionToggle = (index: number): void => {
+    setOpenAccordion((prevIndex) => (prevIndex === index ? null : index));
   };
 
   useEffect(() => {
@@ -89,7 +97,7 @@ const ServicesImplementation: NextPage = () => {
 
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal]">
-    <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
+      <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
         <div className="mt-[2rem]"><NavbarPage /></div>
       </div>
       <Heros
@@ -107,29 +115,25 @@ const ServicesImplementation: NextPage = () => {
         >
           <div className="w-[81.25rem] flex flex-col items-start justify-start gap-[2rem]">
             <div
-              style={padding}
-              className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
+              className="w-[81.25rem] h-auto flex flex-col items-center justify-start gap-0 [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5"
               data-acc-item
-              data-acc-open
-              data-acc-original
-              data-acc-default-open
             >
               {/* Accordion Header */}
               <div
-                style={padding}
                 className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
                 data-acc-header
-                onClick={handleAccordionToggle}
+                onClick={() => handleAccordionToggle(1)}
               >
                 <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                <input
-                  className="w-[21.063rem] [border:none] [outline:none] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
-                  placeholder="IT Service Management (ITSM)"
-                  type="text"
-                />
+                <div
+                  className="w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
+                >
+                  IT Service Management (ITSM)
+                </div>
                 <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
                   <Image
-                    className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
+                    className={`w-[0.825rem] h-[0.5rem] relative z-[1] transition-transform ${openAccordion === 1 ? "rotate-180" : ""
+                      }`}
                     width={13}
                     height={8}
                     alt=""
@@ -140,13 +144,11 @@ const ServicesImplementation: NextPage = () => {
 
               {/* Accordion Content */}
               <div
-                className="w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden"
-                style={{
-                  height: accordionOpen ? "auto" : "0px", // Dynamically control height
-                }}
+                className={`w-full flex flex-col items-center justify-start overflow-hidden [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] ${openAccordion === 1 ? "h-auto" : "h-0"
+                  }`}
                 data-acc-content
               >
-                <div className="flex  md:flex-row items-center gap-6 responsive">
+                <div className="flex md:flex-row items-center gap-6 responsive">
                   {/* Image */}
                   <Image
                     className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
@@ -163,8 +165,8 @@ const ServicesImplementation: NextPage = () => {
                       text="IT Service Management (ITSM)"
                       deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
                       unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
-                      createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
-                      deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesize your shared data and analytics."
+                      createResilientAdaptablePeople1="Create resilient & adaptable people first experiences"
+                      deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesise your shared data and analytics"
                     />
                   </div>
                 </div>
@@ -172,29 +174,25 @@ const ServicesImplementation: NextPage = () => {
             </div>
 
             <div
-              style={padding}
-              className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
+              className="w-[81.25rem] h-auto flex flex-col items-center justify-start gap-0 [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5"
               data-acc-item
-              data-acc-open
-              data-acc-original
-              data-acc-default-open
             >
               {/* Accordion Header */}
               <div
-                style={padding}
                 className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
                 data-acc-header
-                onClick={handleAccordionToggle2}
+                onClick={() => handleAccordionToggle(2)}
               >
                 <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                <input
-                  className="w-[21.063rem] [border:none] [outline:none] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
-                  placeholder="IT Operations Management"
-                  type="text"
-                />
+                <div
+                  className="w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
+                >
+                  IT Operations Management
+                </div>
                 <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
                   <Image
-                    className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
+                    className={`w-[0.825rem] h-[0.5rem] relative z-[1] transition-transform ${openAccordion === 2 ? "rotate-180" : ""
+                      }`}
                     width={13}
                     height={8}
                     alt=""
@@ -205,10 +203,8 @@ const ServicesImplementation: NextPage = () => {
 
               {/* Accordion Content */}
               <div
-                className="w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden"
-                style={{
-                  height: accordionOpen2 ? "auto" : "0px", // Dynamically control height
-                }}
+                className={`w-full flex flex-col items-center justify-start overflow-hidden [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] ${openAccordion === 2 ? "h-auto" : "h-0"
+                  }`}
                 data-acc-content
               >
                 <div className="flex md:flex-row items-center gap-6 responsive">
@@ -218,14 +214,14 @@ const ServicesImplementation: NextPage = () => {
                     loading="lazy"
                     width={532}
                     height={400}
-                    alt="Image description"
-                    src="/smarthometechnologywallsystemandcouplewith20231127051651utc-1@2x.png"
+                    alt=""
+                    src="/iotm.png"
                   />
 
                   {/* Content Section */}
                   <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
                     <ItServiceManagemant
-                      text="IT Operations Management "
+                      text="IT Operations Management"
                       deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
                       unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
                       createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
@@ -238,31 +234,29 @@ const ServicesImplementation: NextPage = () => {
 
 
 
-            <div className="w-[100%]  flex flex-col items-start justify-start gap-[2rem]">
+
+            <div className="w-[100%] flex flex-col items-start justify-start gap-[2rem]">
               <div
-                style={padding}
-                className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
+                className="w-[81.25rem] h-auto flex flex-col items-center justify-start gap-0 [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5"
                 data-acc-item
-                data-acc-open
-                data-acc-original
-                data-acc-default-open
               >
                 {/* Accordion Header */}
                 <div
-                  style={padding}
                   className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
                   data-acc-header
-                  onClick={handleAccordionToggle3} // Replace with your function
+                  onClick={() => handleAccordionToggle(3)}
                 >
                   <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                  <input
-                    className="w-[21.063rem] [border:none] [outline:none] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
-                    placeholder="Customer Service Management "
-                    type="text"
-                  />
+                  <div
+                    className="w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap"
+                  >
+                    Customer Service Management
+                  </div>
+
                   <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
                     <Image
-                      className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
+                      className={`w-[0.825rem] h-[0.5rem] relative z-[1] transition-transform ${openAccordion === 3 ? "rotate-180" : ""
+                        }`}
                       width={13}
                       height={8}
                       alt=""
@@ -273,10 +267,8 @@ const ServicesImplementation: NextPage = () => {
 
                 {/* Accordion Content */}
                 <div
-                  className="w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden"
-                  style={{
-                    height: accordionOpen3 ? "auto" : "0px", // Dynamically control height
-                  }}
+                  className={`w-full flex flex-col items-center justify-start overflow-hidden [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] ${openAccordion === 3 ? "h-auto" : "h-0"
+                    }`}
                   data-acc-content
                 >
                   <div className="flex md:flex-row items-center gap-6 responsive">
@@ -287,13 +279,13 @@ const ServicesImplementation: NextPage = () => {
                       width={532}
                       height={400}
                       alt=""
-                      src="/smarthometechnologywallsystemandcouplewith20231127051651utc-1@2x.png"
+                      src="/csmt.png"
                     />
 
                     {/* Content Section */}
                     <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
                       <ItServiceManagemant
-                        text="Customer Service Management "
+                        text="Customer Service Management"
                         deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
                         unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
                         createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
@@ -303,28 +295,30 @@ const ServicesImplementation: NextPage = () => {
                   </div>
                 </div>
               </div>
+            </div>
 
+
+
+            <div
+              style={padding}
+              className="w-[100%] flex flex-col items-start justify-start gap-[2rem]"
+            >
               <div
-                style={padding}
-                className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
+                className="w-[81.25rem] h-auto flex flex-col items-center justify-start gap-0 [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5"
                 data-acc-item
-                data-acc-open
-                data-acc-original
-                data-acc-default-open
               >
                 {/* Accordion Header */}
                 <div
-                  style={padding}
                   className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
                   data-acc-header
-                  onClick={handleAccordionToggle4} // Replace with your function
+                  onClick={() => handleAccordionToggle(4)}
                 >
                   <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                  <input
-                    className="w-[21.063rem] [border:none] [outline:none] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
-                    placeholder=" IT Asset Management (ITAM) "
-                    type="text"
-                  />
+                  <div
+                    className="w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
+                  >
+                    IT Asset Management (ITAM)
+                  </div>
                   <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
                     <Image
                       className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
@@ -338,10 +332,8 @@ const ServicesImplementation: NextPage = () => {
 
                 {/* Accordion Content */}
                 <div
-                  className="w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden"
-                  style={{
-                    height: accordionOpen4 ? "auto" : "0px", // Dynamically control height
-                  }}
+                  className={`w-full flex flex-col items-center justify-start overflow-hidden [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] ${openAccordion === 4 ? "h-auto" : "h-0"
+                    }`}
                   data-acc-content
                 >
                   <div className="flex md:flex-row items-center gap-6 responsive">
@@ -352,7 +344,7 @@ const ServicesImplementation: NextPage = () => {
                       width={532}
                       height={400}
                       alt=""
-                      src="/smarthometechnologywallsystemandcouplewith20231127051651utc-1@2x.png"
+                      src="/itam.png"
                     />
 
                     {/* Content Section */}
@@ -368,202 +360,197 @@ const ServicesImplementation: NextPage = () => {
                   </div>
                 </div>
               </div>
-
-              <div
-                style={padding}
-                className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
-                data-acc-item
-                data-acc-open
-                data-acc-original
-                data-acc-default-open
-              >
-                {/* Accordion Header */}
-                <div
-                  style={padding}
-                  className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
-                  data-acc-header
-                  onClick={handleAccordionToggle5} // Replace with your function
-                >
-                  <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                  <input
-                    className="w-[21.063rem] [border:none] [outline:none] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
-                    placeholder="HR Service Delivery "
-                    type="text"
-                  />
-                  <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
-                    <Image
-                      className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
-                      width={13}
-                      height={8}
-                      alt=""
-                      src="/vector-21.svg"
-                    />
-                  </div>
-                </div>
-
-                {/* Accordion Content */}
-                <div
-                  className="w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden"
-                  style={{
-                    height: accordionOpen5 ? "auto" : "0px", // Dynamically control height
-                  }}
-                  data-acc-content
-                >
-                  <div className="flex md:flex-row items-center gap-6 responsive">
-                    {/* Image */}
-                    <Image
-                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
-                      loading="lazy"
-                      width={532}
-                      height={400}
-                      alt=""
-                      src="/smarthometechnologywallsystemandcouplewith20231127051651utc-1@2x.png"
-                    />
-
-                    {/* Content Section */}
-                    <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
-                      <ItServiceManagemant
-                        text="HR Service Delivery"
-                        deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
-                        unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
-                        createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
-                        deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesize your shared data and analytics."
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                style={padding}
-                className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
-                data-acc-item
-                data-acc-open
-                data-acc-original
-                data-acc-default-open
-              >
-                {/* Accordion Header */}
-                <div
-                  style={padding}
-                  className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
-                  data-acc-header
-                  onClick={handleAccordionToggle6} // Replace with your function
-                >
-                  <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                  <input
-                    className="w-[21.063rem] [border:none] [outline:none] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
-                    placeholder="Security Operations "
-                    type="text"
-                  />
-                  <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
-                    <Image
-                      className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
-                      width={13}
-                      height={8}
-                      alt=""
-                      src="/vector-21.svg"
-                    />
-                  </div>
-                </div>
-
-                {/* Accordion Content */}
-                <div
-                  className="w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden"
-                  style={{
-                    height: accordionOpen6 ? "auto" : "0px", // Dynamically control height
-                  }}
-                  data-acc-content
-                >
-                  <div className="flex md:flex-row items-center gap-6 responsive">
-                    {/* Image */}
-                    <Image
-                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
-                      loading="lazy"
-                      width={532}
-                      height={400}
-                      alt=""
-                      src="/smarthometechnologywallsystemandcouplewith20231127051651utc-1@2x.png"
-                    />
-
-                    {/* Content Section */}
-                    <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
-                      <ItServiceManagemant
-                        text="Security Operations"
-                        deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
-                        unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
-                        createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
-                        deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesize your shared data and analytics."
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                style={padding}
-                className="w-[81.25rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
-                data-acc-item
-                data-acc-open
-                data-acc-original
-                data-acc-default-open
-              >
-                {/* Accordion Header */}
-                <div
-                  style={padding}
-                  className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
-                  data-acc-header
-                  onClick={handleAccordionToggle7}
-                >
-                  <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                  <input
-                    className="w-[21.063rem] [border:none] [outline:none] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
-                    placeholder="Now Assist "
-                    type="text"
-                  />
-                  <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
-                    <Image
-                      className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
-                      width={13}
-                      height={8}
-                      alt=""
-                      src="/vector-21.svg"
-                    />
-                  </div>
-                </div>
-
-                {/* Accordion Content */}
-                <div
-                  className={`w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden ${accordionOpen7 ? "open" : ""
-                    }`}
-                  style={{
-                    height: accordionOpen7 ? "auto" : "0px", // Dynamically control height
-                  }}
-                  data-acc-content
-                >
-                  <div className="flex md:flex-row items-center gap-6 responsive">
-                    {/* Image */}
-                    <Image
-                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
-                      loading="lazy"
-                      width={532}
-                      height={400}
-                      alt=""
-                      src="/smarthometechnologywallsystemandcouplewith20231127051651utc-1@2x.png"
-                    />
-
-                    {/* Content Section */}
-                    <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
-                      <ItServiceManagemant
-                        text="Now Assist"
-                        deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
-                        unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
-                        createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
-                        deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesize your shared data and analytics."
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
+
+
+            <div
+              style={padding}
+              className="w-[100%] flex flex-col items-start justify-start gap-[2rem]"
+            >
+              <div
+                className="w-[81.25rem] h-auto flex flex-col items-center justify-start gap-0 [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5"
+                data-acc-item
+              >
+                {/* Accordion Header */}
+                <div
+                  className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
+                  data-acc-header
+                  onClick={() => handleAccordionToggle(5)}
+                >
+                  <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
+                  <div
+                    className="w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
+                  >
+                    HR Service Delivery
+                  </div>
+                  <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
+                    <Image
+                      className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
+                      width={13}
+                      height={8}
+                      alt=""
+                      src="/vector-21.svg"
+                    />
+                  </div>
+                </div>
+
+                {/* Accordion Content */}
+                <div
+                  className={`w-full flex flex-col items-center justify-start overflow-hidden [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] ${openAccordion === 5 ? "h-auto" : "h-0"
+                    }`}
+                  data-acc-content
+                >
+                  <div className="flex md:flex-row items-center gap-6 responsive">
+                    {/* Image */}
+                    <Image
+                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
+                      loading="lazy"
+                      width={532}
+                      height={400}
+                      alt=""
+                      src="/hsd.png"
+                    />
+
+                    {/* Content Section */}
+                    <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
+                      <ItServiceManagemant
+                        text="  HR Service Delivery "
+                        deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
+                        unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
+                        createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
+                        deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesize your shared data and analytics."
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              style={padding}
+              className="w-[100%] flex flex-col items-start justify-start gap-[2rem]"
+            >
+              <div
+                className="w-[81.25rem] h-auto flex flex-col items-center justify-start gap-0 [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5"
+                data-acc-item
+              >
+                {/* Accordion Header */}
+                <div
+                  className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
+                  data-acc-header
+                  onClick={() => handleAccordionToggle(6)}
+                >
+                  <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
+                  <div
+                    className="w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
+                  >
+                    Security Operations
+                  </div>
+                  <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
+                    <Image
+                      className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
+                      width={13}
+                      height={8}
+                      alt=""
+                      src="/vector-21.svg"
+                    />
+                  </div>
+                </div>
+
+                {/* Accordion Content */}
+                <div
+                  className={`w-full flex flex-col items-center justify-start overflow-hidden [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] ${openAccordion === 6 ? "h-auto" : "h-0"
+                    }`}
+                  data-acc-content
+                >
+                  <div className="flex md:flex-row items-center gap-6 responsive">
+                    {/* Image */}
+                    <Image
+                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
+                      loading="lazy"
+                      width={532}
+                      height={400}
+                      alt=""
+                      src="/so.png"
+                    />
+
+                    {/* Content Section */}
+                    <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
+                      <ItServiceManagemant
+                        text="  Security Operations "
+                        deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
+                        unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
+                        createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
+                        deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesize your shared data and analytics."
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              style={padding}
+              className="w-[100%] flex flex-col items-start justify-start gap-[2rem]"
+            >
+              <div
+                className="w-[81.25rem] h-auto flex flex-col items-center justify-start gap-0 [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5"
+                data-acc-item
+              >
+                {/* Accordion Header */}
+                <div
+                  className="w-[81.25rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-start py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative"
+                  data-acc-header
+                  onClick={() => handleAccordionToggle(7)}
+                >
+                  <div className="w-[81.25rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
+                  <div
+                    className="w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] text-color text-left inline-block p-0 z-[1] mq450:text-[1.188rem] mq450:leading-[2.5rem]"
+                  >
+                    Now Assist
+                  </div>
+                  <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border">
+                    <Image
+                      className="w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage"
+                      width={13}
+                      height={8}
+                      alt=""
+                      src="/vector-21.svg"
+                    />
+                  </div>
+                </div>
+
+                {/* Accordion Content */}
+                <div
+                  className={`w-full flex flex-col items-center justify-start overflow-hidden [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] ${openAccordion === 7 ? "h-auto" : "h-0"
+                    }`}
+                  data-acc-content
+                >
+                  <div className="flex md:flex-row items-center gap-6 responsive">
+                    {/* Image */}
+                    <Image
+                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img ml-[2rem]"
+                      loading="lazy"
+                      width={532}
+                      height={400}
+                      alt=""
+                      src="/na.png"
+                    />
+
+                    {/* Content Section */}
+                    <div className="w-[51.5rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] overflow-hidden">
+                      <ItServiceManagemant
+                        text=" Now Assist "
+                        deliverResilientITServices="Deliver resilient IT services and create experiences that help your teams be more productive. Resolve issues quickly and speed the pace of innovation using AI and machine learning."
+                        unburdenYourITServicesStaff="Unburden your IT services staff and boost IT productivity"
+                        createResilientAdaptablePeople1="Create resilient & adaptable people-first experiences"
+                        deliverITServicesOnASingle1="Deliver IT services on a single system of engagement by using workflows to synthesize your shared data and analytics."
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
 
           </div>
         </div>
