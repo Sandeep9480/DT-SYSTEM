@@ -311,9 +311,13 @@ const DigitalTranspormationRoadmap: NextPage<
                             {item.content.description.map((desc, index) => (
                               <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: -10 }}
+                                initial={{ opacity: 0, x: -15 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 1.3 + index * 0.5 }}
+                                transition={{
+                                  duration: 1,
+                                  delay: 1.2 + index * 0.4,
+                                  ease: [0.5, 0.3, 0.5, 1.3]
+                                }}
                                 className="relative leading-[1.875rem]"
                               >
                                 {desc}

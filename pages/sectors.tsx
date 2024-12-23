@@ -1,6 +1,9 @@
+"use client"
+
 import type { NextPage } from "next";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence, MotionStyle } from "framer-motion";
 import ItServiceManagemant from "../components/ItServiceManagemant";
 import NavbarPage from "../components/NavbarPage";
 import Footer from "../components/Footer";
@@ -61,7 +64,7 @@ const SectorData = [
     title: "Retail",
     image: "/Rectangle 23806.png",
     heading: "Transforming Retail with ServiceNow",
-    description: "In today’s retail environment, businesses need to be agile, responsive, and efficient to keep up with customer expectations. ServiceNow enables retailers to enhance service delivery, optimize supply chain operations, and provide better customer support. Whether you need help with managing inventory, automating customer service, or streamlining operations, our solutions are designed to meet the unique challenges of the retail sector.",
+    description: "In today's retail environment, businesses need to be agile, responsive, and efficient to keep up with customer expectations. ServiceNow enables retailers to enhance service delivery, optimize supply chain operations, and provide better customer support. Whether you need help with managing inventory, automating customer service, or streamlining operations, our solutions are designed to meet the unique challenges of the retail sector.",
     benefits: [
       "Streamline inventory management and logistics",
       "Automate customer support for faster resolution times",
@@ -84,11 +87,73 @@ const SectorData = [
   }
 ];
 
-
 const Sectors: NextPage = () => {
+  // Animation variants
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
+  };
+
+  const accordionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: index * 0.2,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    })
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    },
+    exit: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
+  };
+
+  // Refs and state
   const [openAccordion, setOpenAccordion] = useState<number | null>(1);
-  const [section, setSection] = useState({});
-  const [padding, setPadding] = useState({});
+  const [section, setSection] = useState<React.CSSProperties>({});
+  const [padding, setPadding] = useState<React.CSSProperties>({});
+  const [style, setStyle] = useState<React.CSSProperties>({});
+  const [div, setDiv] = useState<React.CSSProperties>({});
+  const [secondDiv, setSecondDiv] = useState<React.CSSProperties>({});
+  const [imgStyle, setImgStyle] = useState<React.CSSProperties>({});
 
   const handleAccordionToggle = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -97,13 +162,23 @@ const Sectors: NextPage = () => {
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 500) {
-        setSection({
-          padding: "1rem"
+        setSection({ padding: "1rem" });
+        setPadding({ padding: "0" });
+        setDiv({
+          padding: "0",
+          gap: "0.5rem"
         });
-        setPadding({
+        setImgStyle({ height: "30%" });
+        setSecondDiv({
+          gap: "1rem",
           padding: "0"
         });
+        setStyle({ width: "40%" });
       } else {
+        setStyle({});
+        setDiv({});
+        setSecondDiv({});
+        setImgStyle({});
         setPadding({});
         setSection({});
       }
@@ -111,43 +186,7 @@ const Sectors: NextPage = () => {
 
     checkScreen();
     window.addEventListener("resize", checkScreen);
-
-    return () => {
-      window.removeEventListener("resize", checkScreen);
-    };
-  }, []);
-  const [style, setStyle] = useState({});
-  const [div, setDiv] = useState({});
-  const [secondDiv, setSecondDiv] = useState({})
-  const [img, setImg] = useState({})
-  useEffect(() => {
-    const checkScreen = () => {
-      if (window.innerWidth < 500) {
-        setDiv({
-          padding: "0",
-          gap: "0.5rem"
-        })
-        setImg({
-          height: "30%"
-        })
-        setSecondDiv({
-          gap: "1rem",
-          padding: "0"
-        })
-        setStyle({ width: "40%" }); // Corrected: Using an object for the style.
-
-      } else {
-
-        setStyle({}); // Reset style for larger screens.
-      }
-    };
-
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-
-    return () => {
-      window.removeEventListener("resize", checkScreen);
-    };
+    return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
   return (
@@ -162,93 +201,142 @@ const Sectors: NextPage = () => {
         heroTitle="Sectors"
         homeServiceAdvisory="Home • Sectors"
       />
-      <section style={section} className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full lg:pb-[2.938rem] lg:box-border mq750:pl-[2.188rem] mq750:pr-[2.188rem] mq750:pb-[1.938rem] mq750:box-border sectorSection">
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        variants={sectionVariants}
+        style={section}
+        className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full lg:pb-[2.938rem] lg:box-border mq750:pl-[2.188rem] mq750:pr-[2.188rem] mq750:pb-[1.938rem] mq750:box-border sectorSection"
+      >
         <div className="self-stretch flex-1 flex flex-row items-start justify-start text-[1.5rem] text-color" data-acc-group>
           <div className="w-[90rem] flex flex-col items-start justify-start gap-[2rem]">
-            {SectorData.map((item) => (
-              <div
+            {SectorData.map((item, index) => (
+              <motion.div
                 key={item.id}
+                custom={index}
+                variants={accordionVariants}
+                initial="hidden"
+                animate="visible"
                 style={padding}
-                className="w-[90rem] h-auto flex flex-col items-end justify-start gap-[0rem] [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms] text-[1.75rem] text-color-5 items-center"
+                className="w-[90rem] h-auto flex flex-col items-end justify-start gap-[0rem] text-[1.75rem] text-color-5 items-center"
                 data-acc-item
               >
-                {/* Original Accordion Header */}
-                <div
-                  className="w-[86rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-between py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative ml-[-3.5rem] "
+                <motion.div
+                  className="w-[86rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-between py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative ml-[-3.5rem]"
                   data-acc-header
                   onClick={() => handleAccordionToggle(item.id)}
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  <div className="w-[90rem] relative rounded-3xs bg-gray-100 h-[4.625rem] hidden" />
-                  <div
-                    className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}
-                  >
+                  <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}>
                     {item.title}
                   </div>
-                  <div className="h-[1.813rem] w-[0.825rem] flex flex-col items-start justify-start pt-[1.312rem] px-[0rem] pb-[0rem] box-border mt-[-1rem]">
+                  <motion.div
+                    className="h-[1.813rem] w-[0.825rem] flex items-center justify-center"
+                    animate={{ rotate: openAccordion === item.id ? 180 : 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
                     <Image
-                      className={`w-[0.825rem] h-[0.5rem] relative z-[1] arrowImage ${openAccordion === item.id ? "rotate-180" : ""}`}
+                      className="w-[0.825rem] h-[0.5rem] relative z-[1]"
                       width={13}
                       height={8}
                       alt=""
                       src="/vector-21.svg"
                     />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
-                {/* Original Accordion Content */}
-                <div
-                  className={`w-full flex flex-col items-center justify-start [transition-property:height] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[300ms] overflow-hidden ${openAccordion === item.id ? "h-auto" : "h-0"}`}
-                  data-acc-content
-                >
-                  <div className="flex md:flex-row items-start justify-start gap-6 responsive">
-                    <Image
-                      style={{ margin: 0, marginTop: "2rem", marginLeft: "-13rem" }}
-                      className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img "
-                      loading="lazy"
-                      width={532}
-                      height={400}
-                      alt=""
-                      src={item.image}
-                    />
+                <AnimatePresence mode="wait">
+                  {openAccordion === item.id && (
+                    <motion.div
+                      variants={contentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="w-[90rem] flex flex-col items-center justify-start overflow-hidden"
+                    >
+                      <div className="flex md:flex-row items-start justify-start gap-6 responsive">
+                        <motion.div
+                          variants={imageVariants}
+                          initial="hidden"
+                          animate="visible"
+                        >
+                          <Image
+                            style={{ margin: 0, marginTop: "2rem", marginLeft: "-13rem" }}
+                            className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img"
+                            loading="lazy"
+                            width={532}
+                            height={400}
+                            alt=""
+                            src={item.image}
+                          />
+                        </motion.div>
 
-                    <div className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default [transition-property:all] ease-[cubic-bezier(0.4,_0,_0.2,_1)] duration-[150ms]">
-                      <div style={{ ...div }} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
-                        <h1
-                          className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem]  text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap"
-                        >                          "{item.heading}"
-                        </h1>
-                      </div>
-                      <div style={{ ...div }} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
-                        <div className="flex flex-col items-start justify-start gap-[1rem]">
-                          <div className="flex flex-col gap-[0.5rem]">
-
-                            <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[50%]" style={{ fontFamily: "Archivo" }}>
-                              {item.description}
-                            </div>
-
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                          className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
+                        >
+                          <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                            <motion.h1
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.4, duration: 0.8 }}
+                              className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap"
+                            >
+                              {item.heading}
+                            </motion.h1>
                           </div>
-                          <div className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5">
-                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem] " style={{ fontFamily: "Archivo" }} >
-                              Benefits
-                            </div>
-                            <div className="relative text-[1.125rem] leading-[150%] text-color-6">
-                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
-                                {item.benefits.map((benefit, index) => (
-                                  <li key={index}>{benefit}</li>
-                                ))}
-                              </ul>
+                          <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
+                            <div className="flex flex-col items-start justify-start gap-[1rem]">
+                              <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                                className="flex flex-col gap-[0.5rem]"
+                              >
+                                <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[50%]" style={{ fontFamily: "Archivo" }}>
+                                  {item.description}
+                                </div>
+                              </motion.div>
+                              <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6, duration: 0.8 }}
+                                className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
+                              >
+                                <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
+                                  Benefits
+                                </div>
+                                <div className="relative text-[1.125rem] leading-[150%] text-color-6">
+                                  <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                                    {item.benefits.map((benefit, benefitIndex) => (
+                                      <motion.li
+                                        key={benefitIndex}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.7 + benefitIndex * 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                                        style={{ fontFamily: "Archivo" }}
+                                      >
+                                        {benefit}
+                                      </motion.li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </motion.div>
                             </div>
                           </div>
-                        </div>
+                        </motion.div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
       <Footer />
     </div>
   );
