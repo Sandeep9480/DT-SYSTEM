@@ -32,7 +32,7 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
   }, []);
   return (
     <section
-      style={{ padding: "1.5rem !important" }}
+
 
       className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[0.25rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className}`}
     >

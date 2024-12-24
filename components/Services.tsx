@@ -9,7 +9,7 @@ export type ServicesType = {
 const Services: NextPage<ServicesType> = ({ className = "" }) => {
   return (
     <section
-    style={{ padding: "1.5rem !important" }}
+
       className={`bg-gray-100 flex flex-col items-start justify-start pt-[3.5rem] px-[4.375rem] pb-[5.5rem] box-border gap-[1.5rem] max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pt-[2.25rem] mq800:px-[2.188rem] mq800:pb-[3.563rem] mq800:items-center mq800:box-border w-[100%] ${className}`}
     >
       <div className="w-[90rem] h-[42.688rem] relative bg-gray-100 hidden max-w-full  " />
