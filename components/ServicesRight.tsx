@@ -26,10 +26,10 @@ const ServicesRight: NextPage<ServicesRightType> = ({ className = "" }) => {
 
         {/* Default Content */}
         <div className="absolute bottom-[1rem] left-[2rem] right-0 z-[2] p-4 flex flex-col gap-2 transition-opacity duration-300 group-hover:opacity-0">
-          <h1 className="text-[3rem] font-bold sm:text-[2rem] m-0 leading-tight mq1050:text-[2rem]">
+          <h1 className="text-[3rem] font-bold sm:text-[2rem] m-0 leading-tight mq1050:text-[2rem] mq1050:ml-[-2rem]">
             Implementation
           </h1>
-          <div className="flex items-center gap-2 text-color-4">
+          <div className="flex items-center gap-2 text-color-4 mt-2 mq1050:ml-[-2rem]">
             <span className="text-[1.125rem] font-medium sm:text-[1rem]">Learn More</span>
             <Image
               className="w-[0.375rem] h-auto mt-1"
