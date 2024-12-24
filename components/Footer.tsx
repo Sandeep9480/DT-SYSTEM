@@ -1,11 +1,36 @@
 import type { NextPage } from "next";
 import Image from "next/image";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export type FooterType = {
   className?: string;
 };
 
 const Footer: NextPage<FooterType> = ({ className = "" }) => {
+  const [imgStyle, setImgStyle] = useState<React.CSSProperties>({});
+
+
+
+  useEffect(() => {
+    const checkScreen = () => {
+      if (window.innerWidth < 500) {
+
+        setImgStyle({ alignItems: "start" });
+
+
+      } else {
+
+        setImgStyle({});
+
+      }
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   return (
     <footer
       className={`self-stretch bg-ghostwhite flex flex-col items-start justify-start pt-[5.5rem] px-[4.375rem] pb-[2.812rem] box-border gap-[2.062rem] max-w-full text-left text-[1.125rem] text-gray-300 font-archivo 
@@ -18,7 +43,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
     >
       <div className="w-full flex  justify-between gap-10 max-w-full  flex-wrap
         lg:gap-8 md:gap-10 sm:gap-10
-        max-[450px]:gap-0 footer">
+        max-[450px]:gap-0 footer mq500:flex-col mq500:items-center mq500:gap-5rem">
 
         {/* First Column */}
 
@@ -86,7 +111,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px]">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem]">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Resources
           </div>
@@ -98,7 +123,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
 
 
         {/* Third Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px]">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:items-center mq644:mt-[1rem] mq500:ml-[3rem]  " style={imgStyle}>
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Get in Touch
           </div>
@@ -121,7 +146,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
 
 
         {/* Fourth Column */}
-        <div className="flex flex-col items-center justify-start gap-[1.5rem] min-w-[150px]   ">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem] ">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Address
           </div>

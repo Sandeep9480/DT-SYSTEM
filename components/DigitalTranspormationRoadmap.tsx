@@ -213,12 +213,12 @@ const DigitalTranspormationRoadmap: NextPage<
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{
         duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1],  // Smooth cubic-bezier easing
+        ease: [0.25, 0.1, 0.25, 1],
         staggerChildren: 0.1
       }}
-      className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[3.813rem] mq800:box-border mq1125:pb-[5.875rem] mq1125:box-border ${className}`}
+      className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[3.813rem] mq1125:pb-[5.875rem] mq1125:box-border mq1226:ml-[-20px] mq1226:pl-0 mq900:pl-[3rem] mq550:mt-[5rem] ${className} `}
     >
-      <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap mq800:ml-[3rem]">
+      <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap">
         <AnimatePresence mode="wait">
           <motion.div
             key={sideImage}
@@ -243,10 +243,12 @@ const DigitalTranspormationRoadmap: NextPage<
         </AnimatePresence>
 
         <div
-          className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full mq1226:ml-[-6rem] mq1226:pl-0 mq500:ml-[0.1rem] 
-          "
+          className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full mq1226:pl-0"
           data-acc-group
-          style={{ width: '100%' }}
+          style={{
+            width: '100%',
+            paddingLeft: isSmallScreen ? '0' : undefined
+          }}
         >
           {accordionData.map((item, index) => (
             <motion.div

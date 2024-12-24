@@ -142,7 +142,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
             className="text-white p-2 z-50 bg-transparent mr-[1rem]"
             onClick={toggleMenu}
           >
-            <svg className="w-6 h-6 bg-transparent w-[2.7rem] h-[2.7rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 bg-transparent w-[2.4rem] h-[2.4rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (

@@ -34,7 +34,7 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
       className="contact-us-section w-full mx-auto px-8 flex flex-row bg-none gap-[10rem] mq1050:flex-col-reverse mq1050:gap-[4rem] ">
       {/* Left side - Form */}
       <div className="flex-1 ">
-        <form className="grid grid-cols-2 gap-x-10 gap-y-10 form pl-[2rem] mq1050:w-[90%] mq450:w-[80%] mq450:pl-0">
+        <form className="grid grid-cols-2 gap-x-10 gap-y-10 form pl-[2rem] mq1050:w-[90%] mq450:w-[85%]  mq1050:pl-[1rem] mq800:ml-[-1rem]">
           <div className="flex flex-col">
             <input
               type="text"
@@ -94,7 +94,7 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
 
       {/* Right side - Text */}
       <div className="flex-1 ml-0 md:ml-[10rem]  md:block mq1050:flex mq1050:items-center mq1050:justify-center " >
-        <h2 className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0 mq450:text-[2rem] mq450:leading-[2.438rem] mq450:ml-[-5rem] ">
+        <h2 className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0 mq470:text-[2rem] mq470:leading-[2.438rem] mq470:ml-[-5rem] ">
           Connect with us!
           <br />
           <span className="mq1050:hidden"> Let's Grow..</span>

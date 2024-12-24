@@ -121,3 +121,9 @@ body {
     line-height: 4rem;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .getin {
+    align-items: start;
+  }
+}
