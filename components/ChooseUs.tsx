@@ -50,7 +50,7 @@ const ChooseUs: NextPage<ChooseUsType> = ({ className = "" }) => {
   return (
     <section
       id="chooseUs"
-
+      style={{ padding: "1.5rem !important" }}
       data-section="choose-us"
       className={`choose-us-section self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[1rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className} mq800:mt-[5rem] mt-[3rem] mq450:mt-[-0.5rem]`}
     >

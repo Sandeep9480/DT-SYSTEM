@@ -234,7 +234,7 @@ const Sectors: NextPage = () => {
         animate="visible"
         variants={sectionVariants}
         style={section}
-        className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full mq1325:px-[2rem] mq800:px-[1rem] mq800:pb-[3rem] mq450:px-[0.5rem] mq450:pb-[2rem] sectorSection"
+        className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full mq1325:px-[2rem] mq800:px-[1rem] mq800:pb-[3rem] mq450:px-[0.5rem] mq450:pb-[2rem] p-[1.5rem] sectorSection"
       >
         <div className="w-full flex flex-col items-start justify-start gap-[2rem] mq1325:w-full mq800:w-full" data-acc-group>
           {SectorData.map((item, index) => (

@@ -16,7 +16,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
     const checkScreen = () => {
       if (window.innerWidth < 500) {
 
-        setImgStyle({ alignItems: "start" });
+        setImgStyle({ marginLeft: "-1rem" });
 
 
       } else {
@@ -71,7 +71,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
                 src="/awnode-0dfbe7a0261a000265c522e86775eb316775eb1b.svg"
               />
               <Image
-                style={{ border: "1px solid white" }}
+                style={{ border: "1px solid gray" }}
                 className="h-[1.8rem] w-[1.8rem] relative rounded-13xl-1"
                 loading="lazy"
                 width={20}
@@ -100,7 +100,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
         </div>
 
         {/* Second Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px]">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq500:items-center">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             About Us
           </div>
@@ -111,7 +111,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem]">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem] mq500:items-center">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Resources
           </div>
@@ -123,7 +123,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
 
 
         {/* Third Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:items-center mq644:mt-[1rem] mq500:ml-[3rem]  " style={imgStyle}>
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px] mq644:items-center mq644:mt-[1rem] mq500:ml-[3rem] mq500:items-center mq500:ml-[2rem] " style={imgStyle}>
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Get in Touch
           </div>
@@ -146,7 +146,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
 
 
         {/* Fourth Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem] ">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px] mq644:mt-[1rem] mq500:items-center ">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Address
           </div>
@@ -173,10 +173,10 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           sm:flex-col sm:gap-2
           max-[450px]:text-sm
           max-[450px]:gap-4 mq800:flex-col">
-          <div className="relative leading-[160%] z-[1]">
+          <div className="relative leading-[160%] z-[1] text-center">
             © Copyright TechHarbor2024 All Rights Reserved
           </div>
-          <div className="relative leading-[160%] z-[1] sm:text-sm">
+          <div className="relative leading-[160%] z-[1] sm:text-sm text-center">
             Privacy Policy | Terms & Conditions | Disclaimer
           </div>
         </div>

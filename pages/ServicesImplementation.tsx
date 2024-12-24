@@ -196,7 +196,7 @@ const ServicesImplementation: NextPage = () => {
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 500) {
-        setSection({ padding: "1rem" });
+        setSection({ padding: "1.5rem" });
         setPadding({ padding: "0" });
         setExtraDiv({
           display: "flex",
@@ -253,7 +253,7 @@ const ServicesImplementation: NextPage = () => {
         heroTitle="Implementation Services"
         homeServiceAdvisory="Home • Service • Implementation"
       />
-      <div className="w-[54.813rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block max-w-full font-archivo text-[1.125rem] text-color-6 ml-[4.375rem] mt-[0rem] mb-[4rem] mq1000:w-[80%] mq900:ml-[1rem] mq400:text-[1.2rem] mq400:leading-[1.5rem]" >
+      <div className="w-[54.813rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block max-w-full font-archivo text-[1.125rem] text-color-6 ml-[4.375rem] mt-[0rem] mb-[4rem] mq1000:w-[80%] mq900:ml-[1rem] mq400:text-[1.2rem] mq400:leading-[2rem]" style={{ padding: "1rem !important" }} >
         The following are the implementation services we can deliver to help you
         realise your strategic goals. They also set the foundation to approach
         custom automated workflows, e.g. loan operations, claims management,

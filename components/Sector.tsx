@@ -32,6 +32,8 @@ const Sector: NextPage<SectorType> = ({ className = "" }) => {
   }, []);
   return (
     <section
+      style={{ padding: "1.5rem !important" }}
+
       className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[0.25rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className}`}
     >
       <div className="flex-1 flex flex-row items-start justify-start gap-[5.437rem] max-w-full mq800:gap-[3.688rem] mq450:gap-[3.375rem] mq1350:flex-wrap mq1050:flex-col mq1050:gap-[3rem] mq1050:items-center mq1050:justify-center gap-[3rem] ">
