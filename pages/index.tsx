@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start pt-[1.781rem] px-[0rem] pb-[0rem] box-border gap-[6.5rem] leading-[normal] tracking-[normal] text-left text-[4.5rem] text-white font-archivo mq800:gap-[3.25rem] mq450:gap-[1.625rem]">
       <Image
-        className="w-full h-[50rem] absolute !m-[0] top-[0rem] right-[0rem] left-[0rem] max-w-full overflow-hidden shrink-0 object-cover mq800:h-[40rem] mq450:h-[30rem]"
+        className="w-full h-[50rem] absolute !m-[0] top-[0rem] right-[0rem] left-[0rem] max-w-full overflow-hidden shrink-0 object-cover mq800:h-[40rem] mq450:h-[40rem]"
         width={1440}
         height={800}
         alt=""
@@ -25,8 +25,8 @@ const Home: NextPage = () => {
       <div className="w-[0.063rem] h-[5.75rem] relative border-gray-600 border-r-[1px] border-solid box-border hidden z-[4]" />
       <div className="flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[13.093rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[8.5rem] mq800:box-border mt-[6rem]">
         <div className="flex flex-col items-start justify-start gap-[1rem] max-w-full">
-          <div className="flex flex-col items-start justify-start gap-[0.5rem] max-w-full">
-            <h1 className="m-0 relative text-inherit leading-[5rem] capitalize font-bold font-inherit z-[1] mq800:text-[3rem] mq800:leading-[4rem] mq500:text-[2.5rem]  index-title">
+          <div className="flex flex-col items-start justify-start gap-[0.5rem] max-w-full mq800:gap-[1rem] w-auto">
+            <h1 className="m-0 relative text-inherit leading-[5rem] capitalize font-bold font-inherit z-[1] mq800:text-[3rem] mq800:leading-[4rem] mq500:text-[2.3rem]  index-title mq450:w-auto">
               <p className="m-0">Transformation</p>
               <p className="m-0">Delivered</p>
 

@@ -123,8 +123,8 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
       className={`self-stretch flex flex-row items-start justify-start pt-4 px-4 lg:px-[4.375rem] pb-4 lg:pb-[6.812rem] box-border max-w-full flex items-center mr-[50px] p-0 m-0 ${className}`}
       style={style}
     >
-      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar">
-        <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem]`}>
+      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar mq450:ml-[2.5rem]">
+        <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem] mq450:ml-[-.5rem]`}>
           <a href="/">
             <Image
               className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1]"
@@ -139,7 +139,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
         {modal && (
           <button
-            className="text-white p-2 z-50 bg-transparent"
+            className="text-white p-2 z-50 bg-transparent mr-[1rem]"
             onClick={toggleMenu}
           >
             <svg className="w-6 h-6 bg-transparent w-[2.7rem] h-[2.7rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

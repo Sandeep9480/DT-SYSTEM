@@ -188,6 +188,19 @@ const DigitalTranspormationRoadmap: NextPage<
       }
     }
   ];
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const updateScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 1226);
+    };
+
+    updateScreenSize(); // Set the initial state
+    window.addEventListener('resize', updateScreenSize);
+
+    return () => window.removeEventListener('resize', updateScreenSize);
+  }, []);
+
 
   // Add refs for scroll detection
   const sectionRef = useRef(null);
@@ -205,7 +218,7 @@ const DigitalTranspormationRoadmap: NextPage<
       }}
       className={`self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[9rem] box-border max-w-full text-left text-[1.5rem] text-color font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[3.813rem] mq800:box-border mq1125:pb-[5.875rem] mq1125:box-border ${className}`}
     >
-      <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap">
+      <div className="flex-1 flex flex-row items-start justify-start gap-[5.875rem] max-w-full mq800:gap-[2.938rem] mq450:gap-[1.438rem] mq1325:flex-wrap mq800:ml-[3rem]">
         <AnimatePresence mode="wait">
           <motion.div
             key={sideImage}
@@ -219,7 +232,7 @@ const DigitalTranspormationRoadmap: NextPage<
           >
             <Image
               style={img}
-              className="w-[34.25rem] relative rounded-11xl max-h-full object-cover max-w-full mq1325:flex-1"
+              className="w-[34.25rem] relative rounded-11xl max-h-full object-cover max-w-full mq1325:flex-1 mq1226:hidden"
               loading="lazy"
               width={548}
               height={834}
@@ -230,8 +243,10 @@ const DigitalTranspormationRoadmap: NextPage<
         </AnimatePresence>
 
         <div
-          className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full"
+          className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[26.75rem] max-w-full mq800:min-w-full mq1226:ml-[-6rem] mq1226:pl-0 mq500:ml-[0.1rem] 
+          "
           data-acc-group
+          style={{ width: '100%' }}
         >
           {accordionData.map((item, index) => (
             <motion.div
@@ -239,9 +254,18 @@ const DigitalTranspormationRoadmap: NextPage<
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 1, delay: index * 0.4 }}
+              style={{ width: '100%' }}
             >
               <div
-                className="w-[46.125rem] h-auto flex flex-col items-start justify-start pt-0 px-0 pb-[1rem] box-border cursor-pointer "
+                className="w-full h-auto flex flex-col items-start justify-start pt-0 px-0 pb-[1rem] box-border cursor-pointer gap-[1.5rem]
+                  mq1325:w-full mq1325:gap-[1.25rem]
+                  mq800:w-full mq800:gap-[1rem]
+                  mq450:w-full mq450:gap-[0.75rem] "
+                style={{
+                  width: '100%',
+                  minWidth: '100%',
+                  maxWidth: '100%'
+                }}
                 data-acc-item
                 data-acc-header
                 data-acc-original
@@ -250,7 +274,7 @@ const DigitalTranspormationRoadmap: NextPage<
                   setSideImage(item.image);
                 }}
               >
-                <div className="h-[4.625rem] w-full rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border">
+                <div className="w-full h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border">
                   <div className={`font-medium font-archivo text-[1.5rem] bg-transparent leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'
                     } text-left truncate mq450:text-[1.188rem] mq450:leading-[2.5rem]`}>
                     {item.title}
@@ -276,8 +300,34 @@ const DigitalTranspormationRoadmap: NextPage<
                         height: { duration: 1, ease: [0.25, 0.1, 0.25, 1] },
                         opacity: { duration: 1, delay: 0.4 }
                       }}
-                      className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
+                      className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
                     >
+                      {isSmallScreen && (
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={sideImage}
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 30 }}
+                            transition={{
+                              duration: 1,
+                              ease: [0.25, 0.1, 0.25, 1],
+                            }}
+                            className="hidden-on-large"
+                          >
+                            <Image
+                              style={img}
+                              className=" relative rounded-11xl max-h-full object-cover max-w-full w-[100%] h-[30rem]"
+                              loading="lazy"
+                              width={548}
+                              height={834}
+                              alt=""
+                              src={sideImage}
+                            />
+                          </motion.div>
+                        </AnimatePresence>
+                      )}
+
                       <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}

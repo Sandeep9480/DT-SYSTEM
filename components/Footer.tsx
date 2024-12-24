@@ -16,15 +16,15 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       max-[450px]:pt-10
       ${className}`}
     >
-      <div className="w-full flex justify-between space-x-10 max-w-full 
-        lg:grid-cols-2 sm:grid-cols-1 
-        lg:gap-8 md:gap-6 sm:gap-8
-        max-[450px]:gap-12">
+      <div className="w-full flex  justify-between gap-10 max-w-full  flex-wrap
+        lg:gap-8 md:gap-10 sm:gap-10
+        max-[450px]:gap-0 footer">
 
         {/* First Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.706rem] text-[1rem] text-color-6 w-[20%]">
+
+        <div className="flex flex-col items-start justify-start gap-[1.706rem] text-[1rem] text-color-6 w-[20%] min-w-[200px] max-w-full">
           <Image
-            className="w-[12.688rem] h-[1.469rem] relative z-[1] mq450:w-[100%]"
+            className="w-[12.688rem] h-[1.469rem] relative z-[1] max-w-full"
             loading="lazy"
             width={203}
             height={24}
@@ -36,7 +36,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
               Lorem ipsum dolor sit amet consectetur. Aliquam nibh quam
             </div>
             <div className="flex flex-row items-center gap-[0.737rem] z-[1] text-[0.781rem] text-gray-400 font-inter flex-wrap
-            max-[450px]:gap-4">
+            max-[450px]:gap-4 ">
               <Image
                 className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
                 loading="lazy"
@@ -75,34 +75,30 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
         </div>
 
         {/* Second Column */}
-        <div className="flex flex-row justify-between gap-8 sm:gap-4 ">
-          <div className="flex flex-col items-start justify-start gap-[1.5rem]">
-            <div className="relative leading-[1.875rem] font-semibold z-[1]">
-              About Us
-            </div>
-            <div className="flex flex-col items-start justify-start gap-[0.968rem] text-color-6">
-              <div className="relative leading-[1.875rem] z-[1]">Leadership Team</div>
-              <a className="[text-decoration:none] relative leading-[1.875rem] text-[inherit] z-[1]">Careers</a>
-              <div className="relative leading-[1.875rem] z-[1]">Partner Network</div>
-            </div>
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px]">
+          <div className="relative leading-[1.875rem] font-semibold z-[1]">
+            About Us
           </div>
-
-        </div>
-
-        <div className="flex flex-row justify-between sm:gap-4 ">
-          <div className="flex flex-col items-start justify-start gap-[1.5rem]">
-            <div className="relative leading-[1.875rem] font-semibold z-[1]">
-              Resources
-            </div>
-            <div className="flex flex-col items-start justify-start gap-[1rem] text-color-6">
-              <div className="relative leading-[1.875rem] z-[1]">Blog</div>
-              <div className="relative leading-[1.875rem] z-[1]">Case Studies</div>
-            </div>
+          <div className="flex flex-col items-start justify-start gap-[0.968rem] text-color-6">
+            <div className="relative leading-[1.875rem] z-[1]">Leadership Team</div>
+            <a className="[text-decoration:none] relative leading-[1.875rem] text-[inherit] z-[1]">Careers</a>
+            <div className="relative leading-[1.875rem] z-[1]">Partner Network</div>
           </div>
         </div>
+
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[150px]">
+          <div className="relative leading-[1.875rem] font-semibold z-[1]">
+            Resources
+          </div>
+          <div className="flex flex-col items-start justify-start gap-[1rem] text-color-6">
+            <div className="relative leading-[1.875rem] z-[1]">Blog</div>
+            <div className="relative leading-[1.875rem] z-[1]">Case Studies</div>
+          </div>
+        </div>
+
 
         {/* Third Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] ">
+        <div className="flex flex-col items-start justify-start gap-[1.5rem] min-w-[200px]">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Get in Touch
           </div>
@@ -123,8 +119,9 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           </div>
         </div>
 
+
         {/* Fourth Column */}
-        <div className="flex flex-col items-start justify-start gap-[1.5rem] ">
+        <div className="flex flex-col items-center justify-start gap-[1.5rem] min-w-[150px]   ">
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Address
           </div>
@@ -135,10 +132,11 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             <p className="m-0">Singapore 338729.</p>
           </div>
         </div>
-      </div>
+
+      </div >
 
       {/* Footer Divider */}
-      <div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6">
+      < div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6" >
         <Image
           className="w-full h-[1px] relative z-[1] object-cover"
           width={1300}
@@ -146,10 +144,10 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           alt=""
           src="/divider.svg"
         />
-        <div className="w-full flex flex-row items-start justify-between gap-4 
+        <div className="w-full flex flex-row items-center justify-between gap-4 
           sm:flex-col sm:gap-2
           max-[450px]:text-sm
-          max-[450px]:gap-4">
+          max-[450px]:gap-4 mq800:flex-col">
           <div className="relative leading-[160%] z-[1]">
             © Copyright TechHarbor2024 All Rights Reserved
           </div>
@@ -157,8 +155,8 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             Privacy Policy | Terms & Conditions | Disclaimer
           </div>
         </div>
-      </div>
-    </footer>
+      </ div>
+    </footer >
   );
 };
 
