@@ -154,6 +154,7 @@ const Sectors: NextPage = () => {
   const [div, setDiv] = useState<React.CSSProperties>({});
   const [secondDiv, setSecondDiv] = useState<React.CSSProperties>({});
   const [imgStyle, setImgStyle] = useState<React.CSSProperties>({});
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const handleAccordionToggle = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -161,19 +162,24 @@ const Sectors: NextPage = () => {
 
   useEffect(() => {
     const checkScreen = () => {
-      if (window.innerWidth < 500) {
+      if (window.innerWidth < 768) {
         setSection({ padding: "1rem" });
         setPadding({ padding: "0" });
         setDiv({
           padding: "0",
           gap: "0.5rem"
         });
-        setImgStyle({ height: "30%" });
+        setImgStyle({ height: "auto", width: "100%" });
         setSecondDiv({
           gap: "1rem",
           padding: "0"
         });
-        setStyle({ width: "40%" });
+        setStyle({ fontSize: "1.2rem" });
+      } else if (window.innerWidth < 1024) {
+        setSection({ padding: "2rem" });
+        setPadding({ padding: "1rem" });
+        setImgStyle({ height: "auto", width: "100%" });
+        setStyle({ width: "100%" });
       } else {
         setStyle({});
         setDiv({});
@@ -188,11 +194,33 @@ const Sectors: NextPage = () => {
     window.addEventListener("resize", checkScreen);
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
+  useEffect(() => {
+    const checkScreen = () => {
+      if (window.innerWidth < 500) {
+        setStyle({ fontSize: "1.2rem" });
+      } else {
+        setStyle({});
+      }
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+  useEffect(() => {
+    const updateScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 1226);
+    };
+
+    updateScreenSize();
+    window.addEventListener('resize', updateScreenSize);
+    return () => window.removeEventListener('resize', updateScreenSize);
+  }, []);
 
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal]">
       <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
-        <div className="mt-[2rem]"><NavbarPage /></div>
+        <div className=" mt-[2rem] mq1240:mt-[3rem]"><NavbarPage /></div>
       </div>
       <Hero
         frameSectionWidth="unset"
@@ -206,135 +234,148 @@ const Sectors: NextPage = () => {
         animate="visible"
         variants={sectionVariants}
         style={section}
-        className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full lg:pb-[2.938rem] lg:box-border mq750:pl-[2.188rem] mq750:pr-[2.188rem] mq750:pb-[1.938rem] mq750:box-border sectorSection"
+        className="self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[4.5rem] box-border max-w-full mq1325:px-[2rem] mq800:px-[1rem] mq800:pb-[3rem] mq450:px-[0.5rem] mq450:pb-[2rem] sectorSection"
       >
-        <div className="self-stretch flex-1 flex flex-row items-start justify-start text-[1.5rem] text-color" data-acc-group>
-          <div className="w-[90rem] flex flex-col items-start justify-start gap-[2rem]">
-            {SectorData.map((item, index) => (
+        <div className="w-full flex flex-col items-start justify-start gap-[2rem] mq1325:w-full mq800:w-full" data-acc-group>
+          {SectorData.map((item, index) => (
+            <motion.div
+              key={item.id}
+              custom={index}
+              variants={accordionVariants}
+              initial="hidden"
+              animate="visible"
+              style={padding}
+              className="w-full h-auto flex flex-col items-end justify-start gap-[0rem] text-[1.75rem] text-color-5 items-center mq1325:w-full mq800:w-full"
+              data-acc-item
+            >
               <motion.div
-                key={item.id}
-                custom={index}
-                variants={accordionVariants}
-                initial="hidden"
-                animate="visible"
-                style={padding}
-                className="w-[90rem] h-auto flex flex-col items-end justify-start gap-[0rem] text-[1.75rem] text-color-5 items-center"
-                data-acc-item
+                className="w-full h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border cursor-pointer mq800:px-[1rem] mq450:px-[0.5rem]"
+                data-acc-header
+                onClick={() => handleAccordionToggle(item.id)}
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               >
+                <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}>
+                  {item.title}
+                </div>
                 <motion.div
-                  className="w-[86rem] h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-start justify-between py-[0.75rem] pl-[4rem] pr-[4.937rem] box-border gap-[50.375rem] cursor-pointer items-center responsiveHeader relative ml-[-3.5rem]"
-                  data-acc-header
-                  onClick={() => handleAccordionToggle(item.id)}
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="h-[1.813rem] w-[0.825rem] flex items-center justify-center"
+                  animate={{ rotate: openAccordion === item.id ? 180 : 0 }}
+                  transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap`}>
-                    {item.title}
-                  </div>
-                  <motion.div
-                    className="h-[1.813rem] w-[0.825rem] flex items-center justify-center"
-                    animate={{ rotate: openAccordion === item.id ? 180 : 0 }}
-                    transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                  >
-                    <Image
-                      className="w-[0.825rem] h-[0.5rem] relative z-[1]"
-                      width={13}
-                      height={8}
-                      alt=""
-                      src="/vector-21.svg"
-                    />
-                  </motion.div>
+                  <Image
+                    className="w-[0.825rem] h-[0.5rem] relative z-[1]"
+                    width={13}
+                    height={8}
+                    alt=""
+                    src="/vector-21.svg"
+                  />
                 </motion.div>
-
-                <AnimatePresence mode="wait">
-                  {openAccordion === item.id && (
-                    <motion.div
-                      variants={contentVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                      className="w-[90rem] flex flex-col items-center justify-start overflow-hidden"
-                    >
-                      <div className="flex md:flex-row items-start justify-start gap-6 responsive">
-                        <motion.div
-                          variants={imageVariants}
-                          initial="hidden"
-                          animate="visible"
-                        >
-                          <Image
-                            style={{ margin: 0, marginTop: "2rem", marginLeft: "-13rem" }}
-                            className="w-[33.25rem] h-[25rem] relative rounded-11xl object-cover img"
-                            loading="lazy"
-                            width={532}
-                            height={400}
-                            alt=""
-                            src={item.image}
-                          />
-                        </motion.div>
-
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                          className="w-[41.125rem] grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default"
-                        >
-                          <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
-                            <motion.h1
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.4, duration: 0.8 }}
-                              className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap"
-                            >
-                              {item.heading}
-                            </motion.h1>
-                          </div>
-                          <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
-                            <div className="flex flex-col items-start justify-start gap-[1rem]">
-                              <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5, duration: 0.8 }}
-                                className="flex flex-col gap-[0.5rem]"
-                              >
-                                <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[50%]" style={{ fontFamily: "Archivo" }}>
-                                  {item.description}
-                                </div>
-                              </motion.div>
-                              <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.6, duration: 0.8 }}
-                                className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
-                              >
-                                <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
-                                  Benefits
-                                </div>
-                                <div className="relative text-[1.125rem] leading-[150%] text-color-6">
-                                  <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
-                                    {item.benefits.map((benefit, benefitIndex) => (
-                                      <motion.li
-                                        key={benefitIndex}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.7 + benefitIndex * 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                                        style={{ fontFamily: "Archivo" }}
-                                      >
-                                        {benefit}
-                                      </motion.li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              </motion.div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
-            ))}
-          </div>
+
+              <AnimatePresence mode="wait">
+                {openAccordion === item.id && (
+                  <motion.div
+                    variants={contentVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="w-full flex flex-col items-center justify-start overflow-hidden
+                    mq1325:w-full
+                    mq800:w-full"
+                  >
+                    <div className="flex flex-row items-start justify-start gap-6 responsive
+                    mq1226:flex-col mq1226:w-full mq1226:flex-col w-100%" style={{ width: "100%" }}>
+                      <motion.div
+                        variants={imageVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="w-[33.25rem] relative
+                        mq1226:w-full mq1226:max-h-[400px]
+                        mq800:max-h-[600px]
+                        mq450:max-h-[800px]"
+                      >
+                        <Image
+                          style={{
+                            margin: 0,
+                            marginTop: isSmallScreen ? "1rem" : "2rem",
+                            marginLeft: isSmallScreen ? "0" : "1rem",
+                            width: isSmallScreen ? "100%" : undefined,
+                            height: isSmallScreen ? "20rem" : undefined,
+
+                          }}
+                          className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem]"
+                          loading="lazy"
+                          width={532}
+                          height={400}
+                          alt=""
+                          src={item.image}
+                        />
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                        className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default mq1226:px-[1rem] mq800:px-[0.5rem]"
+                      >
+                        <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                          <motion.h1
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4, duration: 0.8 }}
+                            style={style as React.CSSProperties}
+                            className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10]  whitespace-nowrap mq600:text-[1.5rem] mq600:leading-[2.5rem] mq500:text-[1.2rem] mq500:leading-[1.5rem]"
+                          >
+                            "{item.heading}"
+                          </motion.h1>
+                        </div>
+                        <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
+                          <div className="flex flex-col items-start justify-start gap-[1rem]">
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.5, duration: 0.8 }}
+                              className="flex flex-col gap-[0.5rem]"
+                            >
+                              <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[90%]" style={{ fontFamily: "Archivo" }}>
+                                {item.description}
+                              </div>
+                            </motion.div>
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.6, duration: 0.8 }}
+                              className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
+                            >
+                              <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
+                                Benefits
+                              </div>
+                              <div className="relative text-[1.125rem] leading-[150%] text-color-6">
+                                <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                                  {item.benefits.map((benefit, benefitIndex) => (
+                                    <motion.li
+                                      key={benefitIndex}
+                                      initial={{ opacity: 0, x: -20 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: 0.7 + benefitIndex * 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                                      style={{ fontFamily: "Archivo" }}
+                                    >
+                                      {benefit}
+                                    </motion.li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </motion.div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
         </div>
       </motion.section>
       <Footer />

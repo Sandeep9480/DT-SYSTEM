@@ -244,7 +244,7 @@ const ServicesImplementation: NextPage = () => {
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal]">
       <div style={{ height: "110px", width: "100%", backgroundColor: "#112e11f0" }} >
-        <div className="mt-[2rem]"><NavbarPage /></div>
+        <div className=" mt-[2rem] mq1240:mt-[3rem]"><NavbarPage /></div>
       </div>
       <Heros
         frameSectionWidth="unset"

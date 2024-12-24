@@ -73,7 +73,7 @@ const ChooseUs: NextPage<ChooseUsType> = ({ className = "" }) => {
 
         {/* Animation Items */}
         <div className="w-[33.25rem] flex flex-row items-end justify-start gap-[1.5rem] max-w-full text-[2rem] text-color-6 mq800:flex-wrap mq800:min-w-full mq1350:flex-1">
-          <div className="flex flex-col items-start justify-end pt-[0rem] px-[0rem] pb-[0.375rem] pl-[2rem]">
+          <div className="flex flex-col items-start justify-end pt-[0rem] px-[0rem] pb-[0.375rem] pl-[2rem] mq900:pl-[1rem]">
             {/* First Item */}
             <motion.div
               ref={ref1}  // Attach the first ref to this element

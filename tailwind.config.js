@@ -118,6 +118,21 @@ module.exports = {
       mq1000: {
         raw: "screen and (max-width: 1000px)",
       },
+      mq600: {
+        raw: "screen and (max-width: 600px)",
+      },
+      mq700: {
+        raw: "screen and (max-width: 700px)",
+      },
+      mq460: {
+        raw: "screen and (max-width: 460px)",
+      },
+      mq430: {
+        raw: "screen and (max-width: 430px)",
+      },
+      mq1240: {
+        raw: "screen and (max-width: 1240px)",
+      },
     },
   },
   corePlugins: {

@@ -52,7 +52,7 @@ const SectorRight: NextPage<SectorRightType> = ({
         className="flex-1 flex flex-col items-start justify-start pt-[0.437rem] px-[0rem] pb-[0rem] box-border min-w-[13.875rem] max-w-full "
         style={frameDivStyle}
       >
-        <h2 className="m-0 relative text-inherit leading-[3.5rem] capitalize font-medium font-inherit z-[1] mq800:text-[1.625rem] mq800:leading-[2.813rem] mq450:text-[1.188rem] mq450:leading-[2.125rem]  ">
+        <h2 className="m-0 relative text-inherit leading-[3.5rem] capitalize font-medium font-inherit z-[1] mq800:text-[1.625rem] mq800:leading-[2.813rem] mq450:text-[1.188rem] mq450:leading-[2.125rem] mq400:text-center ">
           {informationTechnology}
         </h2>
 

@@ -39,49 +39,49 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
             <input
               type="text"
               placeholder="Name*"
-              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="border-b  pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400" style={{ borderBottom: "1px solid gray" }}
             />
           </div>
           <div className="flex flex-col ">
             <input
               type="email"
               placeholder="Email*"
-              className="email border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="email border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400 " style={{ borderBottom: "1px solid gray" }}
             />
           </div>
           <div className="flex flex-col mt-7">
             <input
               type="tel"
               placeholder="Phone Number"
-              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400" style={{ borderBottom: "1px solid gray" }}
             />
           </div>
           <div className="flex flex-col mt-7">
             <input
               type="text"
               placeholder="Country*"
-              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400" style={{ borderBottom: "1px solid gray" }}
             />
           </div>
           <div className="flex flex-col mt-7">
             <input
               type="text"
               placeholder="Company Name*"
-              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400" style={{ borderBottom: "1px solid gray" }}
             />
           </div>
           <div className="flex flex-col mt-7">
             <input
               type="text"
               placeholder="Position*"
-              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400" style={{ borderBottom: "1px solid gray" }}
             />
           </div>
           <div className="col-span-2 flex flex-col mt-7">
             <input
               type="text"
               placeholder="Message"
-              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400"
+              className="border-b border-gray-200 pb-3 outline-none text-lg placeholder:text-gray-800 text-muted-foreground opacity-50 text-[17px] border-b border-gray-400" style={{ borderBottom: "1px solid gray" }}
             />
           </div>
           <div>
@@ -94,7 +94,7 @@ const ConnectWithUs: NextPage<ConnectWithUsType> = ({ className = "" }) => {
 
       {/* Right side - Text */}
       <div className="flex-1 ml-0 md:ml-[10rem]  md:block mq1050:flex mq1050:items-center mq1050:justify-center " >
-        <h2 className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0 mq470:text-[2rem] mq470:leading-[2.438rem] mq470:ml-[-5rem] ">
+        <h2 className="text-[3rem] font-bold leading-[1.1] text-gray-900 m-0 mq470:text-[2rem] mq470:leading-[2.438rem] mq700:ml-[-6rem] mq700:text-center mq700:text-[2rem] ">
           Connect with us!
           <br />
           <span className="mq1050:hidden"> Let's Grow..</span>

@@ -161,7 +161,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
       </div >
 
       {/* Footer Divider */}
-      < div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6" >
+      < div className="w-full flex flex-col items-start justify-start gap-[1rem] text-color-6 mq460:ml-[2rem] mq430:ml-[1rem] mq400:ml-[-1rem]" >
         <Image
           className="w-full h-[1px] relative z-[1] object-cover"
           width={1300}

@@ -51,16 +51,20 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
   // Add refs for the dropdowns
   const serviceDropdownRef = useRef<HTMLDivElement>(null);
   const resourceDropdownRef = useRef<HTMLDivElement>(null);
-
+  const [margin, setMargin] = useState({});
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 1240) {
         setModal(true);
         setStyle({ padding: "0px", margin: "0px" });
+        setMargin({ marginRight: "3rem" });
+      } else if (window.innerWidth < 700) {
+        setMargin({ marginRight: "2rem" });
       } else {
         setModal(false);
         setIsMenuOpen(false);
         setStyle({});
+        setMargin({});
       }
     };
 
@@ -139,8 +143,9 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
         {modal && (
           <button
-            className="text-white p-2 z-50 bg-transparent mr-[1rem]"
+            className="text-white p-2 z-50 bg-transparent mr-[1rem] navbar-button "
             onClick={toggleMenu}
+
           >
             <svg className="w-6 h-6 bg-transparent w-[2.4rem] h-[2.4rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
@@ -300,13 +305,15 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
         )}
 
         {modal && isMenuOpen && (
-          <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 left-[-1rem]" style={{ backgroundColor: "#0000009e" }}>
-            <div className="flex flex-col py-6 px-4 bg-transparent items-center">
-              <a href="/" className="[text-decoration:none] relative font-semibold text-color-4 py-4 border-b border-gray-700 cursor-pointer">
+          <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 left-[-1rem] mq450:left-[-3rem]"
+            style={{ backgroundColor: "#0000009e" }}>
+            <div className="flex flex-col py-6 px-4 bg-transparent items-center justify-center gap-[1.5rem] mt-[2rem]">
+              <a href="/"
+                className="[text-decoration:none] relative font-semibold text-color-4 cursor-pointer text-[1.2rem]">
                 Home
               </a>
               <button
-                className="[text-decoration:none] relative text-[inherit] py-4 border-b border-gray-700 cursor-pointer bg-transparent border-0 text-white font-archivo text-[1rem] w-full"
+                className="[text-decoration:none] relative text-[inherit] cursor-pointer bg-transparent border-0 text-white font-archivo text-[1.2rem]"
                 onClick={(e) => {
                   handleSectionClick(e, 'chooseUs');
                   toggleMenu();
@@ -314,16 +321,18 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
               >
                 Why Us
               </button>
-              <div className="w-full">
+
+              {/* Service Dropdown */}
+              <div className="flex flex-col items-center">
                 <div
-                  className="flex flex-row items-center justify-center py-4 border-b border-gray-700 cursor-pointer"
+                  className="flex flex-row items-center justify-center cursor-pointer gap-[0.5rem]"
                   onClick={toggleServiceDropdown}
                 >
-                  <a className="[text-decoration:none] relative text-[inherit]">
+                  <a className="[text-decoration:none] relative text-[1.2rem] text-white">
                     Service
                   </a>
                   <Image
-                    className={`w-[0.588rem] h-[0.356rem] relative transition-transform duration-300 ml-2 ${serviceDropdown ? 'rotate-180' : ''}`}
+                    className={`w-[0.588rem] h-[0.356rem] relative transition-transform duration-300 ${serviceDropdown ? 'rotate-180' : ''}`}
                     width={9}
                     height={6}
                     alt=""
@@ -331,41 +340,30 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                   />
                 </div>
                 {serviceDropdown && (
-                  <div className="bg-white rounded-lg w-[40%] mx-auto mt-2">
-                    <a style={{ textDecoration: 'none' }} href="/services-advisory" className="block py-3 px-4 text-gray-800 hover:bg-gray-100">
+                  <div className="mt-4 flex flex-col items-center gap-[1rem]">
+                    <a style={{ textDecoration: 'none' }} href="/services-advisory"
+                      className="text-white hover:text-gray-300 text-[1rem]">
                       Advisory
                     </a>
-                    <a style={{ textDecoration: 'none' }} href="/ServicesImplementation" className="block py-3 px-4 text-gray-800 hover:bg-gray-100">
+                    <a style={{ textDecoration: 'none' }} href="/ServicesImplementation"
+                      className="text-white hover:text-gray-300 text-[1rem]">
                       Implementation
                     </a>
                   </div>
                 )}
               </div>
-              <a
-                className="[text-decoration:none] relative text-[inherit] py-4 border-b border-gray-700 cursor-pointer"
-                onClick={onSectorsTextClick}
-              >
-                Sectors
-              </a>
-              <button
-                className="[text-decoration:none] relative text-[inherit] py-4 border-b border-gray-700 cursor-pointer bg-transparent border-0 text-white font-archivo text-[1rem] w-full"
-                onClick={(e) => {
-                  handleSectionClick(e, 'careers');
-                  toggleMenu();
-                }}
-              >
-                Careers
-              </button>
-              <div className="w-full">
+
+              {/* Resources Dropdown - Similar structure */}
+              <div className="flex flex-col items-center">
                 <div
-                  className="flex flex-row items-center justify-center py-4 border-b border-gray-700 cursor-pointer"
+                  className="flex flex-row items-center justify-center cursor-pointer gap-[0.5rem]"
                   onClick={toggleResourceDropdown}
                 >
-                  <a className="[text-decoration:none] relative text-[inherit]">
+                  <a className="[text-decoration:none] relative text-[1.2rem] text-white">
                     Resources
                   </a>
                   <Image
-                    className={`w-[0.456rem] h-[0.275rem] relative transition-transform duration-300 ml-2 ${resourceDropdown ? 'rotate-180' : ''}`}
+                    className={`w-[0.456rem] h-[0.275rem] relative transition-transform duration-300 ${resourceDropdown ? 'rotate-180' : ''}`}
                     width={7}
                     height={4}
                     alt=""
@@ -373,27 +371,43 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
                   />
                 </div>
                 {resourceDropdown && (
-                  <div className="bg-white rounded-lg w-[40%] mx-auto mt-2">
-                    <a className="block py-3 px-4 text-gray-800 hover:bg-gray-100">
-                      Blog
-                    </a>
-                    <a className="block py-3 px-4 text-gray-800 hover:bg-gray-100">
-                      Partners
-                    </a>
-                    <a className="block py-3 px-4 text-gray-800 hover:bg-gray-100">
-                      Case Studies
-                    </a>
+                  <div className="mt-4 flex flex-col items-center gap-[1rem]">
+                    <a className="text-white hover:text-gray-300 text-[1rem]">Blog</a>
+                    <a className="text-white hover:text-gray-300 text-[1rem]">Partners</a>
+                    <a className="text-white hover:text-gray-300 text-[1rem]">Case Studies</a>
                   </div>
                 )}
               </div>
+
+              {/* Other menu items */}
+              <a className="[text-decoration:none] relative text-[1.2rem] text-white cursor-pointer"
+                onClick={onSectorsTextClick}>
+                Sectors
+              </a>
               <button
-                className="[text-decoration:none] relative text-[inherit] py-4 border-b border-gray-700 cursor-pointer bg-transparent border-0 text-white font-archivo text-[1rem] w-full"
+                className="[text-decoration:none] relative text-[1.2rem] cursor-pointer bg-transparent border-0 text-white font-archivo"
+                onClick={(e) => {
+                  handleSectionClick(e, 'careers');
+                  toggleMenu();
+                }}
+              >
+                Careers
+              </button>
+              <button
+                className="[text-decoration:none] relative text-[1.2rem] cursor-pointer bg-transparent border-0 text-white font-archivo"
                 onClick={(e) => {
                   handleSectionClick(e, 'contactUs');
                   toggleMenu();
                 }}
               >
                 Contact Us
+              </button>
+
+              {/* Demo button */}
+              <button className="cursor-pointer border-white border-[1px] border-solid py-[1rem] px-[2rem] bg-[transparent] rounded-8xs mt-[1rem] hover:bg-gainsboro-200 hover:border-gainsboro-100">
+                <a className="[text-decoration:none] text-[1rem] font-archivo text-white text-center">
+                  Request a Demo
+                </a>
               </button>
             </div>
           </div>
