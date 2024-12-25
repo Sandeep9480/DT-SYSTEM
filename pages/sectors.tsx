@@ -319,17 +319,25 @@ const Sectors: NextPage = () => {
                         transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                         className="w-full grid flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.5rem] box-border cursor-default mq1226:px-[1rem] mq800:px-[0.5rem]"
                       >
-                        <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                        <div
+                          style={div as React.CSSProperties}
+                          className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
+                        >
                           <motion.h1
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                             style={style as React.CSSProperties}
-                            className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10]  whitespace-nowrap mq600:text-[1.5rem] mq600:leading-[2.5rem] mq500:text-[1.2rem] mq500:leading-[1.5rem]"
+                            className="w-full max-w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] 
+      whitespace-normal break-words break-all 
+      mq600:text-[1.5rem] mq600:leading-[2.5rem] 
+      mq500:text-[1.2rem] mq500:leading-[1.5rem]"
                           >
                             "{item.heading}"
                           </motion.h1>
                         </div>
+
+
                         <div style={div as React.CSSProperties} className="flex flex-row items-start justify-start pt-[0rem] px-[2rem] pb-[1rem] box-border text-[1.125rem] text-color-6">
                           <div className="flex flex-col items-start justify-start gap-[1rem]">
                             <motion.div

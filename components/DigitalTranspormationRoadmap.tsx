@@ -297,9 +297,14 @@ const DigitalTranspormationRoadmap: NextPage<
                   whileHover={{ scale: 1.01 }}
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq460:text-[1rem] mq460:leading-[2.5rem] whitespace-nowrap mq400:text-[1rem] mq400:leading-[2.5rem]`}>
+                  <div
+                    className={`w-full max-w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'
+                      } text-left inline-block p-0 z-[10] whitespace-nowrap mq460:whitespace-normal break-words mq460:text-[1.2rem] mq460:leading-[2.5rem] mq400:leading-[2.5rem]`}
+                  >
                     {item.title}
                   </div>
+
+
                   <motion.div
                     className="h-[1.813rem] w-[0.825rem] flex items-center justify-center"
                     animate={{ rotate: openAccordion === item.id ? 180 : 0 }}

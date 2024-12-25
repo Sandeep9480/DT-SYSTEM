@@ -253,7 +253,7 @@ const ServicesImplementation: NextPage = () => {
         heroTitle="Implementation Services"
         homeServiceAdvisory="Home • Service • Implementation"
       />
-      <div className="w-[54.813rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block max-w-full font-archivo text-[1.125rem] text-color-6 ml-[4.375rem] mt-[0rem] mb-[4rem] mq1000:w-[80%] mq900:ml-[1rem] mq400:text-[1.2rem] mq400:leading-[2rem]" style={{ padding: "1rem !important" }} >
+      <div className="w-[54.813rem] relative leading-[1.875rem] whitespace-pre-wrap inline-block max-w-full font-archivo text-[1.125rem] text-color-6 ml-[3.5rem] mt-[0rem] mb-[4rem] mq1000:w-[80%] mq900:ml-[0.5rem] mq400:text-[1.2rem] mq400:leading-[2rem]" style={{ padding: "1rem !important" }} >
         The following are the implementation services we can deliver to help you
         realise your strategic goals. They also set the foundation to approach
         custom automated workflows, e.g. loan operations, claims management,
@@ -269,7 +269,7 @@ const ServicesImplementation: NextPage = () => {
           px-[4.375rem] pb-[4.5rem] box-border max-w-full 
           mq1325:px-[2rem] 
           mq800:px-[1rem] mq800:pb-[3rem]
-          mq450:px-[0.5rem] mq450:pb-[2rem]"
+          mq450:px-[0.5rem] mq450:pb-[2rem] p-[4rem]"
       >
 
         <div
@@ -300,7 +300,7 @@ const ServicesImplementation: NextPage = () => {
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap mq400:text-[1rem] mq400:leading-[2.5rem]`}>
+                <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq520:text-[1.188rem] mq520:leading-[2.5rem] whitespace-nowrap mq400:text-[1rem] mq400:whitespace-normal mq400:leading-[2.5rem]`}>
                   {item.title}
                 </div>
                 <motion.div

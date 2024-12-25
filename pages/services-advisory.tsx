@@ -86,7 +86,9 @@ const ServicesAdvisory: NextPage = () => {
         className="w-[48.875rem] flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[11.5rem] box-border max-w-full mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:pb-[7.5rem] mq800:box-border"
       >
         <motion.div
-          className="flex-1 flex flex-col items-start justify-start gap-[0.5rem] max-w-full "
+          className="flex-1 flex flex-col items-start justify-start gap-[0.5rem] max-w-full" style={{
+            marginLeft: "-0.5rem"
+          }}
           variants={containerVariants}
           initial="hidden"
           animate={controls}

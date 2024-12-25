@@ -51,20 +51,23 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
   // Add refs for the dropdowns
   const serviceDropdownRef = useRef<HTMLDivElement>(null);
   const resourceDropdownRef = useRef<HTMLDivElement>(null);
-  const [margin, setMargin] = useState({});
+  const [padding, setPadding] = useState({});
+
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 1240) {
         setModal(true);
         setStyle({ padding: "0px", margin: "0px" });
-        setMargin({ marginRight: "3rem" });
+        setPadding({ paddingRight: "3rem" });
       } else if (window.innerWidth < 700) {
-        setMargin({ marginRight: "2rem" });
+        setPadding({ paddingRight: "2rem" });
+      } else if (window.innerWidth < 450) {
+
       } else {
         setModal(false);
         setIsMenuOpen(false);
         setStyle({});
-        setMargin({});
+        setPadding({});
       }
     };
 
@@ -124,14 +127,14 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
   return (
     <section
-      className={`self-stretch flex flex-row items-start justify-start pt-4 px-4 lg:px-[4.375rem] pb-4 lg:pb-[6.812rem] box-border max-w-full flex items-center mr-[50px] p-0 m-0 ${className}`}
+      className={`self-stretch flex flex-row items-start justify-start pt-4 px-4 lg:px-[4.375rem] pb-4 lg:pb-[6.812rem] box-border max-w-full flex items-center mr-[50px] p-0 m-0 ${className} mq900:ml-[0rem]`}
       style={style}
     >
-      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar mq450:ml-[2.5rem]">
-        <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem] mq450:ml-[-.5rem]`}>
+      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar mq450:ml-[2.5rem] mq900:ml-[0rem] mq900:pl[1rem] mq900:pr[1rem] ">
+        <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem] `}>
           <a href="/">
             <Image
-              className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1]"
+              className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1] mq900:ml-[5px] "
               loading="lazy"
               width={203}
               height={24}
@@ -143,7 +146,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
 
         {modal && (
           <button
-            className="text-white p-2 z-50 bg-transparent mr-[1rem] navbar-button "
+            className="text-white p-2 z-50 bg-transparent mr-[1rem] navbar-button mq900:mr-[0rem] "
             onClick={toggleMenu}
 
           >

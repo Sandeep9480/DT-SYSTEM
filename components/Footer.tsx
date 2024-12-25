@@ -57,11 +57,11 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
             src="/dt-systems-1.svg"
           />
           <div className="flex flex-col items-start justify-start gap-[1.25rem]">
-            <div className="relative leading-[150%] z-[1]">
+            <div className="relative leading-[150%] z-[1] mq500:text-center">
               Lorem ipsum dolor sit amet consectetur. Aliquam nibh quam
             </div>
             <div className="flex flex-row items-center gap-[0.737rem] z-[1] text-[0.781rem] text-gray-400 font-inter flex-wrap
-            max-[450px]:gap-4 ">
+            max-[450px]:gap-4 mq500:ml-[1rem] ">
               <Image
                 className="h-[2.006rem] w-[2rem] relative rounded-13xl-1"
                 loading="lazy"

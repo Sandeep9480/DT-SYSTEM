@@ -52,7 +52,7 @@ const ChooseUs: NextPage<ChooseUsType> = ({ className = "" }) => {
       id="chooseUs"
 
       data-section="choose-us"
-      className={`choose-us-section self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[1rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className} mq800:mt-[5rem] mt-[3rem] mq450:mt-[-0.5rem]`}
+      className={`choose-us-section self-stretch flex flex-row items-start justify-start pt-[0rem] px-[4.375rem] pb-[1rem] box-border max-w-full text-left text-[3.375rem] text-gray-200 font-archivo mq800:pl-[2.188rem] mq800:pr-[2.188rem] mq800:box-border ${className} mq800:mt-[5rem] mt-[3rem] mq450:mt-[-0.5rem] mq900:p-[1.5rem]`}
     >
       <div className="flex-1 flex flex-row items-center justify-center gap-[5.437rem] max-w-full mq800:gap-[2.625rem] mq450:gap-[1.313rem] mq1350:gap-[5.188rem] mq1350:flex-wrap mq1050:flex-col">
         <div className="flex-1 flex flex-col items-start justify-start gap-[1rem] min-w-[24.438rem] max-w-full mq800:min-w-full mt-[-1rem] mq1050:mt-[2rem] mq1050:min-w-[100%] mq1050:items-center">
