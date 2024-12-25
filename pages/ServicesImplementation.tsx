@@ -269,7 +269,7 @@ const ServicesImplementation: NextPage = () => {
           px-[4.375rem] pb-[4.5rem] box-border max-w-full 
           mq1325:px-[2rem] 
           mq800:px-[1rem] mq800:pb-[3rem]
-          mq450:px-[0.5rem] mq450:pb-[2rem] p-[4rem]"
+          mq450:px-[0.5rem] mq450:pb-[2rem] p-[4rem] mq900:p-[1.5rem]"
       >
 
         <div

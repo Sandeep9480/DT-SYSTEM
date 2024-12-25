@@ -13,7 +13,7 @@ const Services: NextPage<ServicesType> = ({ className = "" }) => {
   const [style, setStyle] = useState({})
   useEffect(() => {
     const checkScreen = () => {
-      if (window.innerWidth < 500) {
+      if (window.innerWidth < 900) {
         setStyle({
           padding: "1.5rem",
         })

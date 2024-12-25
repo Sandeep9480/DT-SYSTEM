@@ -130,11 +130,11 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
       className={`self-stretch flex flex-row items-start justify-start pt-4 px-4 lg:px-[4.375rem] pb-4 lg:pb-[6.812rem] box-border max-w-full flex items-center mr-[50px] p-0 m-0 ${className} mq900:ml-[0rem]`}
       style={style}
     >
-      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar mq450:ml-[2.5rem] mq900:ml-[0rem] mq900:pl[1rem] mq900:pr[1rem] ">
+      <header className="flex-1 flex flex-row items-center justify-between max-w-full gap-[1.25rem] text-left text-[1rem] text-white font-archivo relative navbar mt-[-1rem] ml-[-1.2rem] header-navbar mq450:ml-[2.5rem] mq900:ml-[0rem] mq900:pl[1rem] mq900:pr[1rem] mq900:ml-[-0.7rem] ">
         <div className={`flex items-center mt-[-5px] relative ml-[5%] xl:ml-[1rem] `}>
           <a href="/">
             <Image
-              className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1] mq900:ml-[5px] "
+              className="h-[1.469rem] relative max-w-[15rem] overflow-hidden shrink-0 cursor-pointer z-[1] mq900:ml-[1px] "
               loading="lazy"
               width={203}
               height={24}
@@ -309,7 +309,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
         )}
 
         {modal && isMenuOpen && (
-          <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 left-[-1rem] mq450:left-[-1rem]"
+          <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 left-[-1rem] mq450:left-[-1rem] mq900:ml-[1rem]"
             style={{ backgroundColor: "#0000009e" }}>
             <div className="flex flex-col py-6 px-4 bg-transparent items-center justify-center gap-[1.5rem] mt-[2rem]">
               <a href="/"

@@ -328,7 +328,7 @@ const Sectors: NextPage = () => {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                             style={style as React.CSSProperties}
-                            className="w-full max-w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] 
+                            className="w-full  font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] 
       whitespace-normal break-words break-all 
       mq600:text-[1.5rem] mq600:leading-[2.5rem] 
       mq500:text-[1.2rem] mq500:leading-[1.5rem]"
