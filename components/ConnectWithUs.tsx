@@ -15,6 +15,8 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
     message: ''
   });
 
+  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -22,14 +24,52 @@ const ConnectWithUs: React.FC<ConnectWithUsType> = ({ className = "" }) => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
-    // Log form data or send it to the server
-    console.log('Form Data Submitted:', formData);
+    // Validate required fields
+    if (!formData.name || !formData.email) {
+      alert('Please fill in all required fields (Name and Email)');
+      return;
+    }
 
-    // You can handle form submission logic here like sending to an API
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to send message');
+      }
+
+      const data = await response.json();
+      
+      if (data.success) {
+        alert('Message sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          country: '',
+          companyName: '',
+          position: '',
+          message: ''
+        });
+      } else {
+        throw new Error(data.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert(error instanceof Error ? error.message : 'Failed to send message');
+    }
   };
+
 
   return (
     <div
