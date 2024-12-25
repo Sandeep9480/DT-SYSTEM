@@ -9,6 +9,18 @@ import ConnectWithUs from "../components/ConnectWithUs";
 import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
+  const handleSectionClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    scrollToSection(sectionId);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start pt-[1.781rem] px-[0rem] pb-[0rem] box-border gap-[6.5rem] leading-[normal] tracking-[normal] text-left text-[4.5rem] text-white font-archivo mq800:gap-[3.25rem] mq450:gap-[1.625rem]">
       <Image
@@ -36,7 +48,8 @@ const Home: NextPage = () => {
               value to your enterprise.
             </div>
           </div>
-          <button className="cursor-pointer [border:none] py-[1rem] px-[2rem] bg-white rounded-8xs flex flex-row items-start justify-start z-[1] hover:bg-gainsboro-100">
+          <button className="cursor-pointer [border:none] py-[1rem] px-[2rem] bg-white rounded-8xs flex flex-row items-start justify-start z-[1] hover:bg-gainsboro-100"
+            onClick={(e) => handleSectionClick(e, 'services')}>
             <div className="h-[3.25rem] w-[9.688rem] relative rounded-8xs bg-white hidden" />
             <a className="[text-decoration:none] flex-1 relative text-[1.125rem] font-archivo text-color text-center inline-block min-w-[5.75rem] z-[1]">
               Learn More

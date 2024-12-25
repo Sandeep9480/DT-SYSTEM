@@ -163,7 +163,7 @@ const Sectors: NextPage = () => {
   useEffect(() => {
     const checkScreen = () => {
       if (window.innerWidth < 768) {
-        setSection({ padding: "1rem" });
+        setSection({ padding: "1.5rem" });
         setPadding({ padding: "0" });
         setDiv({
           padding: "0",
@@ -176,7 +176,7 @@ const Sectors: NextPage = () => {
         });
         setStyle({ fontSize: "1.2rem" });
       } else if (window.innerWidth < 1024) {
-        setSection({ padding: "2rem" });
+
         setPadding({ padding: "1rem" });
         setImgStyle({ height: "auto", width: "100%" });
         setStyle({ width: "100%" });

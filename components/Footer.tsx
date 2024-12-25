@@ -104,7 +104,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             About Us
           </div>
-          <div className="flex flex-col items-start justify-start gap-[0.968rem] text-color-6">
+          <div className="flex flex-col items-start justify-start gap-[0.968rem] text-color-6 mq500:items-center">
             <div className="relative leading-[1.875rem] z-[1]">Leadership Team</div>
             <a className="[text-decoration:none] relative leading-[1.875rem] text-[inherit] z-[1]">Careers</a>
             <div className="relative leading-[1.875rem] z-[1]">Partner Network</div>
@@ -115,7 +115,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Resources
           </div>
-          <div className="flex flex-col items-start justify-start gap-[1rem] text-color-6">
+          <div className="flex flex-col items-start justify-start gap-[1rem] text-color-6 mq500:items-center">
             <div className="relative leading-[1.875rem] z-[1]">Blog</div>
             <div className="relative leading-[1.875rem] z-[1]">Case Studies</div>
           </div>
@@ -150,7 +150,7 @@ const Footer: NextPage<FooterType> = ({ className = "" }) => {
           <div className="relative leading-[1.875rem] font-semibold z-[1]">
             Address
           </div>
-          <div className="relative leading-[1.875rem] text-color-6 z-[1]">
+          <div className="relative leading-[1.875rem] text-color-6 z-[1] mq500:text-center">
             <p className="m-0">114 Lavender Street</p>
             <p className="m-0">#10-06/07</p>
             <p className="m-0">CT Hub 2</p>

@@ -145,3 +145,10 @@ body {
     margin-right: 1.5rem;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .advisoryImage {
+    width: 90% !important;
+
+  }
+}

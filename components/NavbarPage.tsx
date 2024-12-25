@@ -292,7 +292,8 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
               </div>
             </div>
 
-            <button className="cursor-pointer border-white border-[1px] border-solid py-[1rem] px-[2rem] bg-[transparent] h-[3.313rem] w-[11.438rem] rounded-8xs box-border flex flex-row items-start justify-start z-[1] hover:bg-gainsboro-200 hover:border-gainsboro-100 hover:border-[1px] hover:border-solid hover:box-border">
+            <button className="cursor-pointer border-white border-[1px] border-solid py-[1rem] px-[2rem] bg-[transparent] h-[3.313rem] w-[11.438rem] rounded-8xs box-border flex flex-row items-start justify-start z-[1] hover:bg-gainsboro-200 hover:border-gainsboro-100 hover:border-[1px] hover:border-solid hover:box-border"
+              onClick={(e) => handleSectionClick(e, 'contactUs')}>
               <div className="h-[3.313rem] w-[11.438rem] relative rounded-8xs border-white border-[1px] border-solid box-border hidden" />
               <a
                 className="[text-decoration:none] flex-1 relative text-[1rem] font-archivo text-white text-center inline-block min-w-[7.5rem] z-[1]"

@@ -288,21 +288,34 @@ const DigitalTranspormationRoadmap: NextPage<
                   setSideImage(item.image);
                 }}
               >
-                <div className="w-full h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border">
-                  <div className={`font-medium font-archivo text-[1.5rem] bg-transparent leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'
-                    } text-left truncate mq450:text-[1.188rem] mq450:leading-[2.5rem]`}>
+                <motion.div
+                  className="w-full h-[4.625rem] rounded-3xs bg-gray-100 flex flex-row items-center justify-between py-[0.75rem] px-[2rem] box-border cursor-pointer
+                  mq800:px-[1rem]
+                  mq450:px-[0.5rem] p-[1rem]" style={{ padding: "1rem" }}
+                  data-acc-header
+                  onClick={() => handleAccordionToggle(item.id)}
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <div className={`w-[21.063rem] font-medium font-archivo text-[1.5rem] bg-[transparent] relative leading-[3.125rem] ${openAccordion === item.id ? 'text-color-5' : 'text-color-6'} text-left inline-block p-0 z-[10] mq460:text-[1rem] mq460:leading-[2.5rem] whitespace-nowrap mq400:text-[1rem] mq400:leading-[2.5rem]`}>
                     {item.title}
                   </div>
-                  <div className="h-[1.813rem] w-[0.825rem] flex items-center justify-center box-border">
+                  <motion.div
+                    className="h-[1.813rem] w-[0.825rem] flex items-center justify-center"
+                    animate={{ rotate: openAccordion === item.id ? 180 : 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
                     <Image
-                      className={`w-[0.825rem] h-[0.5rem] relative z-[1] transition-transform ${openAccordion === item.id ? "rotate-180" : ""}`}
+                      className="w-[0.825rem] h-[0.5rem] relative z-[1]"
                       width={13}
                       height={8}
                       alt=""
-                      src="/vector-31.svg"
+                      src="/vector-21.svg"
                     />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
+
+
 
                 <AnimatePresence>
                   {openAccordion === item.id && (
@@ -325,7 +338,9 @@ const DigitalTranspormationRoadmap: NextPage<
                             className="w-[33.25rem] relative
                           mq1226:w-full mq1226:max-h-[400px]
                           mq800:max-h-[600px]
-                          mq450:max-h-[800px]"
+                          mq450:max-h-[800px]
+                         
+                          "
                           >
                             <Image
                               style={{
@@ -336,7 +351,7 @@ const DigitalTranspormationRoadmap: NextPage<
                                 height: isSmallScreen ? "20rem" : undefined,
 
                               }}
-                              className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem]"
+                              className="rounded-11xl object-cover img mq1226:w-[100%] mq1226:h-[10rem] advisoryImage"
                               loading="lazy"
                               width={532}
                               height={400}
@@ -347,21 +362,16 @@ const DigitalTranspormationRoadmap: NextPage<
                         </AnimatePresence>
                       )}
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          duration: 1,
-                          delay: index * 0.5,
-                          ease: [0.25, 0.1, 0.25, 1]
-                        }}
-                        style={{ ...div }}
-                        className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5"
-                      >
-                        <h3 className="m-0 relative text-inherit leading-[3.125rem] font-semibold font-inherit inline-block shrink-0 mq450:text-[1.375rem] mq450:leading-[2.5rem] mq450:text-[1.2rem]">
+                      <div style={div} className="flex flex-row items-start justify-start py-[0rem] pl-[2rem] pr-[1.937rem] box-border text-[1.75rem] text-color-5">
+                        <motion.h1
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.4, duration: 0.8 }}
+                          className="w-[21.063rem] font-medium font-archivo text-[2rem] bg-[transparent] relative leading-[3.125rem] text-left inline-block p-0 z-[10] mq450:text-[1.188rem] mq450:leading-[2.5rem] whitespace-nowrap mq550:text-[1.5rem] mq550:leading-[2.5rem] mq400:text-[1.2rem] mq400:leading-[2.5rem]"
+                        >
                           {item.content.heading}
-                        </h3>
-                      </motion.div>
+                        </motion.h1>
+                      </div>
 
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -379,31 +389,28 @@ const DigitalTranspormationRoadmap: NextPage<
                           <div className="flex flex-col gap-[0.5rem]">
                             {item.content.description.map((desc, index) => (
                               <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -15 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{
-                                  duration: 1,
-                                  delay: 1.2 + index * 0.4,
-                                  ease: [0.5, 0.3, 0.5, 1.3]
-                                }}
-                                className="relative leading-[1.875rem]"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                                className="flex flex-col gap-[0.5rem]"
                               >
-                                {desc}
+                                <div className="w-[37.75rem] relative text-[1.125rem] leading-[1.875rem] text-color-6 inline-block mq800:w-[100%] mq400:w-[80%]" style={{ fontFamily: "Archivo" }}>
+                                  {desc}
+                                </div>
                               </motion.div>
                             ))}
                           </div>
                           <motion.div
-                            initial={{ opacity: 0, y: 10 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.3 }}
-                            className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5"
+                            transition={{ delay: 0.6, duration: 0.8 }}
+                            className="flex flex-col gap-[0.5rem] text-[1.5rem] text-color-5 mq400:w-[80%]"
                           >
-                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]">
+                            <div className="relative leading-[2.5rem] font-semibold mq450:text-[1.188rem] mq450:leading-[2rem]" style={{ fontFamily: "Archivo" }}>
                               Benefits
                             </div>
                             <div className="relative text-[1.125rem] leading-[150%] text-color-6">
-                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]">
+                              <ul className="m-0 font-inherit text-inherit pl-[1.333rem]" style={{ fontFamily: "Archivo" }}>
                                 {item.content.benefits.map((benefit, index) => (
                                   <motion.li
                                     key={index}
