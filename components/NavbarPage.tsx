@@ -309,7 +309,7 @@ const NavbarPage: NextPage<NavbarPageType> = ({ className = "" }) => {
         )}
 
         {modal && isMenuOpen && (
-          <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 left-[-1rem] mq450:left-[-3rem]"
+          <div className="absolute top-full left-0 right-0 backdrop-blur w-[100vw] h-[100vh] z-40 left-[-1rem] mq450:left-[-1rem]"
             style={{ backgroundColor: "#0000009e" }}>
             <div className="flex flex-col py-6 px-4 bg-transparent items-center justify-center gap-[1.5rem] mt-[2rem]">
               <a href="/"
