@@ -4,7 +4,6 @@ import type { NextPage } from "next";
 import { useCallback, useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, MotionStyle } from "framer-motion";
-import ItServiceManagemant from "../components/ItServiceManagemant";
 import NavbarPage from "../components/NavbarPage";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";

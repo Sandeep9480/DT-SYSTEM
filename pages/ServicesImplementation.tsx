@@ -9,7 +9,6 @@ import Heros from "../components/Heros";
 import ServicesContent from "../components/services-content";
 import NavbarPage from "../components/NavbarPage";
 import Footer from "../components/Footer";
-import ItServiceManagemant from "../components/ItServiceManagemant";
 import { CSSProperties } from "react";
 import { MotionStyle } from "framer-motion";
 
